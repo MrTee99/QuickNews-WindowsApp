@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="Quick_News_App.Custom_User_Controls.CustomButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Quick_News_App.Custom_User_Controls"
+             mc:Ignorable="d" 
+			 Name="customButton"
+             d:DesignHeight="50" d:DesignWidth="200">
+
+    <Button x:Name="cusBtn">
+
+        <Button.Style>
+            <Style TargetType="Button">
+                <Setter Property="Background" Value="{Binding CusBtn_Background, ElementName=customButton}" />
+                <Setter Property="Foreground" Value="{Binding CusBtn_Foreground, ElementName=customButton}" />
+                <Setter Property="Margin" Value="{Binding CusBtn_Margin, ElementName=customButton}" />
+                <Setter Property="Padding" Value="{Binding CusBtn_Padding, ElementName=customButton}" />
+                <Setter Property="Content" Value="{Binding CusBtn_Content, ElementName=customButton}" />
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{Binding CusBtn_Hover, ElementName=customButton}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Button.Style>
+
+        <Button.Template>
+            <ControlTemplate TargetType="Button">
+                <Border CornerRadius="{Binding CusBtn_CornerRadius, ElementName=customButton}"
+					Background="{TemplateBinding Background}"
+					Margin="{TemplateBinding Margin}"
+					Padding="{TemplateBinding Padding}">
+                    <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Border>
+            </ControlTemplate>
+        </Button.Template>
+
+    </Button>
+
+
+</UserControl>

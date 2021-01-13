@@ -1,0 +1,30 @@
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\bin\Debug\Quick News App.exe.config
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\bin\Debug\Quick News App.exe
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\bin\Debug\Quick News App.pdb
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\MainWindow.g.cs
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\App.g.cs
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Quick News App_MarkupCompile.cache
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Quick News App_MarkupCompile.lref
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\MainWindow.baml
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Quick News App.g.resources
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Quick_News_App.Properties.Resources.resources
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Quick News App.csproj.GenerateResource.cache
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Quick News App.exe
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Quick News App.pdb
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\App.baml
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Resource Dictionaries\RD_Styles.baml
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Resource Dictionaries\RD_LightTheme.baml
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Resource Dictionaries\RD_DarkTheme.baml
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Custom User Controls\CustomButton.g.cs
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Custom User Controls\CustomButton.baml
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Resource Dictionaries\RD_Animations.baml
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Custom User Controls\ThemeToggleSwitch.g.cs
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Custom User Controls\ThemeToggleSwitch.baml
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\LoginWindow.g.cs
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\LoginWindow.baml
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\SignupWindow.g.cs
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\SignupWindow.baml
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Custom User Controls\CustomTextBoxWithPlaceholder.g.cs
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Custom User Controls\CustomTextBoxWithPlaceholder.baml
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Quick News App.csprojAssemblyReference.cache

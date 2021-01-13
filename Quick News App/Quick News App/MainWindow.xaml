@@ -1,0 +1,297 @@
+﻿<Window x:Class="Quick_News_App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Quick_News_App.Custom_User_Controls"
+        mc:Ignorable="d"
+		WindowStyle="None" ResizeMode="NoResize"
+		AllowsTransparency="True" Background="Transparent"
+		WindowStartupLocation="CenterScreen"
+		FontFamily="Vintage Whiskey"
+		MinHeight="500" MinWidth="900"
+        Height="500" Width="900">
+
+	<Border Style="{StaticResource BG_MainForm}">
+
+		<Grid x:Name="MainGrid">
+
+			<Grid.Background>
+				<ImageBrush ImageSource="{DynamicResource MainBackgorundImage}" Stretch="UniformToFill"/>
+			</Grid.Background>
+
+			<Grid.RowDefinitions>
+				<RowDefinition Height="35"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+
+			<!-- Tool Bar -->
+			<Grid Style="{StaticResource BG_TitleBar}" 
+				  MouseLeftButtonDown="DragWindow_MouseLeftButtonDown">
+
+				<Grid.RowDefinitions>
+					<RowDefinition Height="3"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="2"/>
+				</Grid.RowDefinitions>
+
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="10"/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition Width="10"/>
+				</Grid.ColumnDefinitions>
+
+				<!-- Title -->
+				<TextBlock
+					Grid.Row="1" Grid.Column="1"
+					Text="Quick News" FontSize="25" FontWeight="Black"
+					Foreground="White"	 
+					VerticalAlignment="Center"
+					Margin="0 0 0 3"/>
+
+				<!-- Buttons -->
+				<StackPanel Grid.Row="1" Grid.Column="4" Orientation="Horizontal" HorizontalAlignment="Right">
+
+					<local:CustomButton x:Name="btn_Minimize" Click="btn_Minimize_Click"
+										CusBtn_CornerRadius="2"
+										CusBtn_Margin="0 0 2 2.5" CusBtn_Padding="10 0 10 0"
+										CusBtn_Foreground="White" CusBtn_Background="YellowGreen" CusBtn_Hover="#7ba428"
+										CusBtn_Content="-" FontWeight="Black" FontSize="20" FontFamily="Segoe UI"/>
+
+					<local:CustomButton x:Name="btn_Exit" Click="btn_Exit_Click"
+										CusBtn_CornerRadius="2"
+										CusBtn_Margin="0 0 2 2" CusBtn_Padding="8 0 8 0"
+										CusBtn_Foreground="White" CusBtn_Background="Red" CusBtn_Hover="#b30000"
+										CusBtn_Content="X" FontWeight="Black" FontSize="15" FontFamily="Segoe UI"/>
+
+				</StackPanel>
+
+			</Grid>
+
+			<!-- Body -->
+			<Grid Grid.Row="1">
+
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="15"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="15"/>
+				</Grid.ColumnDefinitions>
+
+				<Grid.RowDefinitions>
+					<RowDefinition Height="10"/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition Height="15"/>
+				</Grid.RowDefinitions>
+
+				<!-- Top Part -->
+				<Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="3">
+
+					<Grid.RowDefinitions>
+						<RowDefinition/>
+						<RowDefinition/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+					
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+					</Grid.ColumnDefinitions>
+
+					<!-- Logo -->
+					<Image x:Name="img_Logo" Grid.Row="0" Grid.RowSpan="3"
+						   Grid.Column="0" Grid.ColumnSpan="2"
+						   Stretch="Fill" Margin="0 0 0 10"
+						   Source="{DynamicResource LogoSource}"/>
+
+					<Grid Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="8" Grid.RowSpan="3">
+
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+
+						<!-- Upper Part -->
+						<Grid Grid.Row="0" Grid.RowSpan="2" Margin="0 0 0 30">
+
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition/>
+								<ColumnDefinition/>
+								<ColumnDefinition/>
+								<ColumnDefinition/>
+								<ColumnDefinition/>
+								<ColumnDefinition/>
+								<ColumnDefinition/>
+								<ColumnDefinition/>
+								<ColumnDefinition/>
+								<ColumnDefinition/>
+							</Grid.ColumnDefinitions>
+
+							<!-- Welcome Message -->
+							<TextBlock x:Name="txt_WelcomeMessage"
+									   Grid.Column="0" Grid.ColumnSpan="7"
+									   Margin="8 8 0 0"
+									   Text="Welcome, Guest" FontSize="40" FontWeight="Black"
+									   Style="{StaticResource FG_TextBlock}"
+									   VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+							<!-- Login / Logout and Signup Buttons -->
+							<StackPanel Grid.Column="6" Grid.ColumnSpan="5" 
+										Orientation="Horizontal" 
+										HorizontalAlignment="Right"
+										Margin="0 1 9 3.5">
+
+								<local:CustomButton x:Name="btn_Signup" Click="btn_Signup_Click"
+												CusBtn_CornerRadius="10"
+												CusBtn_Margin="0 1.5 4 0" CusBtn_Padding="15 0 15 0"
+												Style="{StaticResource CustomButtonColor}"
+												CusBtn_Content="Sign Up" FontSize="20" FontWeight="Black"/>
+
+								<local:CustomButton x:Name="btn_LoginOrLogout" Click="btn_LoginOrLogout_Click"
+												CusBtn_CornerRadius="10"
+												CusBtn_Padding="20 0 20 0" CusBtn_Margin="0 1.5 0 0"
+												Style="{StaticResource CustomButtonColor}"
+												CusBtn_Content="Login" FontSize="20" FontWeight="Black"/>
+
+								<!-- DarkMode Button -->
+								<local:ThemeToggleSwitch x:Name="btn_ThemeSwitcher"
+												Grid.Column="8" Grid.ColumnSpan="2"
+												Width="100" Height="45" Padding="0 0 0 1"
+												FontFamily="Segoe UI"
+												HorizontalAlignment="Right" VerticalAlignment="Top"/>
+
+							</StackPanel>
+
+						</Grid>
+
+						<!-- Lower Part - Search Bar -->
+						<local:CustomTextBoxWithPlaceholder x:Name="input_SearchNews"
+															Grid.Row="1" Grid.RowSpan="2"
+															cusTextBox_BorderThickness="3"
+															Height="50"
+															FontSize="20" FontWeight="DemiBold"
+															Placeholder="Search News..."
+															Style="{StaticResource CustomTextboxColor}"
+															CornerRadius="10"
+															CusTextBox_Padding="10 0" Margin="5 0 0 0"/>				
+
+					</Grid>
+
+				</Grid>
+
+				<!-- Middle Part -->
+				<Grid Grid.Column="1" Grid.Row="4" Grid.RowSpan="5" Margin="10 10 10 30">
+
+					<Grid.RowDefinitions>
+						<RowDefinition/>
+						<RowDefinition/>
+						<RowDefinition/>
+						<RowDefinition/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+
+					<!-- My Feed -->
+					<local:CustomButton x:Name="btn_MyFeed" Click="btn_MyFeed_Click"
+										Grid.Row="0" Grid.RowSpan="3"
+										CusBtn_CornerRadius="20 20 0 0"
+										CusBtn_Foreground="{DynamicResource ButtonColorBrush_Text}" CusBtn_Background="{DynamicResource ButtonColor2_Normal}" CusBtn_Hover="{DynamicResource ButtonColor2_Hover}"
+										CusBtn_Content="My Feed" FontSize="50" FontWeight="Black"/>
+
+					<Grid Grid.Row="3" Grid.RowSpan="2">
+
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition/>
+							<ColumnDefinition/>
+						</Grid.ColumnDefinitions>
+
+						<!-- Bookmarks -->
+						<local:CustomButton x:Name="btn_ReadHistory" Click="btn_ReadHistory_Click"
+											Grid.Column="0"
+											CusBtn_CornerRadius="0 0 0 20"
+											CusBtn_Foreground="{DynamicResource ButtonColorBrush_Text}" CusBtn_Background="{DynamicResource ButtonColor3_Normal}" CusBtn_Hover="{DynamicResource ButtonColor3_Hover}"
+											CusBtn_Content="Bookmarks" FontSize="30" FontWeight="Black"/>
+
+						<!-- Read History -->
+						<local:CustomButton x:Name="btn_Bookmark" Click="btn_Bookmark_Click"
+											Grid.Column="1"
+											CusBtn_CornerRadius="0 0 20 0"
+											CusBtn_Foreground="{DynamicResource ButtonColorBrush_Text}" CusBtn_Background="{DynamicResource ButtonColor4_Normal}" CusBtn_Hover="{DynamicResource ButtonColor4_Hover}"
+											CusBtn_Content="Read History" FontSize="30" FontWeight="Black"/>
+
+					</Grid>
+
+				</Grid>
+
+				<!-- Bottom Part -->
+				<Grid Grid.Column="1" Grid.Row="8" Grid.RowSpan="4">
+
+					<Grid.RowDefinitions>
+						<RowDefinition/>
+						<RowDefinition/>
+						<RowDefinition/>
+						<RowDefinition/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+
+					<!-- Suggested Categories Heading -->
+					<TextBlock Grid.Row="0" Grid.RowSpan="2"
+							   Text="Suggested Catgeories" FontSize="40" FontWeight="Black"
+							   VerticalAlignment="Bottom" HorizontalAlignment="Left"
+							   Margin="10 0 0 0"
+							   Style="{StaticResource FG_TextBlock}"/>
+
+					<!-- Suggested Topics Buttons -->
+					<Grid Grid.Row="2" Grid.RowSpan="3">
+
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition/>
+							<ColumnDefinition/>
+							<ColumnDefinition/>
+							<ColumnDefinition/>
+							<ColumnDefinition/>
+							<ColumnDefinition/>
+							<ColumnDefinition/>
+							<ColumnDefinition/>
+						</Grid.ColumnDefinitions>
+
+						<Image x:Name="btn_cat_Politics" Grid.Column="0" Margin="0 3 0 0" Source="{DynamicResource icon_Politics}" MouseDown="btn_cat_Politics_MouseDown"/>
+						<Image x:Name="btn_cat_Sport" Grid.Column="1" Margin="0 3 0 0" Source="{DynamicResource icon_Sports}" MouseDown="btn_cat_Sport_MouseDown"/>
+						<Image x:Name="btn_cat_Business" Grid.Column="2" Margin="0 3 0 0" Source="{DynamicResource icon_Business}" MouseDown="btn_cat_Business_MouseDown"/>
+						<Image x:Name="btn_cat_Science" Grid.Column="3" Margin="0 3 0 0" Source="{DynamicResource icon_Science}" MouseDown="btn_cat_Science_MouseDown"/>
+						<Image x:Name="btn_cat_Automobile" Grid.Column="4" Margin="0 3 0 0" Source="{DynamicResource icon_Automobile}" MouseDown="btn_cat_Automobile_MouseDown"/>
+						<Image x:Name="btn_cat_Fashion" Grid.Column="5" Margin="0 3 0 0" Source="{DynamicResource icon_Fashion}" MouseDown="btn_cat_Fashion_MouseDown"/>
+						<Image x:Name="btn_cat_Health" Grid.Column="6" Margin="0 3 0 0" Source="{DynamicResource icon_Health}" MouseDown="btn_cat_Health_MouseDown"/>
+						<Image x:Name="btn_cat_Education" Grid.Column="7" Margin="0 3 0 0" Source="{DynamicResource icon_Education}" MouseDown="btn_cat_Education_MouseDown"/>
+
+					</Grid>
+
+				</Grid>
+
+			</Grid>
+
+		</Grid>
+
+	</Border>
+
+</Window>

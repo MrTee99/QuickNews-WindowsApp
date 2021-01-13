@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Quick_News_App.Resource_Dictionaries">
+
+	<Color x:Key="Form_BackgroundColor">#393E46</Color>
+	<Color x:Key="Form_BorderColor">#000000</Color>
+
+	<Color x:Key="TextColor">#f7f7f7</Color>
+
+	<Color x:Key="ButtonColor_Normal">#E94560</Color>
+	<Color x:Key="ButtonColor_Hover">#cd1836</Color>
+
+	<Color x:Key="ButtonColor_Text">#f7f7f7</Color>
+	<SolidColorBrush x:Key="ButtonColorBrush_Text">#f7f7f7</SolidColorBrush>
+
+	<SolidColorBrush x:Key="ButtonColor2_Normal">#e73250</SolidColorBrush>
+	<SolidColorBrush x:Key="ButtonColor2_Hover">#e41b3c</SolidColorBrush>
+
+	<SolidColorBrush x:Key="ButtonColor3_Normal">#ea4863</SolidColorBrush>
+	<SolidColorBrush x:Key="ButtonColor3_Hover">#ff3355</SolidColorBrush>
+
+	<SolidColorBrush x:Key="ButtonColor4_Normal">#ef768a</SolidColorBrush>
+	<SolidColorBrush x:Key="ButtonColor4_Hover">#e73250</SolidColorBrush>
+
+	<Color x:Key="TextBoxColor_Outline">#E94560</Color>
+	<Color x:Key="TextBoxColor_Hint">#b3b3b3</Color>
+	<Color x:Key="TextBoxColor_Foreground">#393E46</Color>
+
+	<BitmapImage x:Key="MainBackgorundImage" UriSource="..\Icons\darkBG.jpg"></BitmapImage>
+	
+	<BitmapImage x:Key="LogoSource" UriSource="..\Icons\LogoDarkMode.png"></BitmapImage>
+	
+	<BitmapImage x:Key="icon_Politics" UriSource="..\Icons\pink_Politics.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Sports" UriSource="..\Icons\pink_Sports.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Business" UriSource="..\Icons\pink_Business.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Science" UriSource="..\Icons\pink_Science.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Automobile" UriSource="..\Icons\pink_Automobile.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Fashion" UriSource="..\Icons\pink_Fashion.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Health" UriSource="..\Icons\pink_Health.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Education" UriSource="..\Icons\pink_Education.png"></BitmapImage>
+
+	<!-- 
+	Darkest = #222831
+	Dark Second = #313131
+	Dark Third = #393E46
+	Blue = #115EBA
+	Pink = #E94560
+	
+	White for Text = #f7f7f7
+	-->
+
+</ResourceDictionary>
