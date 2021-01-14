@@ -45,8 +45,8 @@
 
 				<!-- Title -->
 				<TextBlock
-					Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
-					Text="Signup" FontSize="25" FontWeight="Black"
+					Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
+					Text="Quick News - Signup" FontSize="25" FontWeight="Black"
 					Foreground="White"	 
 					VerticalAlignment="Center" HorizontalAlignment="Left"
 					Margin="0 0 0 3"/>
@@ -97,19 +97,19 @@
 							VerticalAlignment="Center" Margin="0 10 0 0">
 
 					<local:CustomTextBoxWithPlaceholder x:Name="input_SignupUsername"
-														Placeholder="Email" 
+														Placeholder="Username" 
 														Style="{StaticResource CustomTextboxColor}" 
 														cusTextBox_BorderThickness="3"
 														CusTextBox_Padding="5 "
-														Height="50"
+														Height="55"
 														CornerRadius="10" Margin="10 0"/>
 
 					<local:CustomTextBoxWithPlaceholder x:Name="input_SignupEmail"
-														Placeholder="Password" 
+														Placeholder="Email" 
 														Style="{StaticResource CustomTextboxColor}" 
 														cusTextBox_BorderThickness="3"
 														CusTextBox_Padding="5" Margin="10 10 10 0"
-														Height="50"
+														Height="55"
 														CornerRadius="10"/>
 
 
@@ -118,7 +118,7 @@
 														Style="{StaticResource CustomTextboxColor}" 
 														cusTextBox_BorderThickness="3"
 														CusTextBox_Padding="5" Margin="10 10 10 0"
-														Height="50"
+														Height="55"
 														CornerRadius="10"/>
 
 				</StackPanel>

@@ -54,14 +54,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Custom User Controls\CustomButtonWithImage.xaml.cs">
+      <DependentUpon>CustomButtonWithImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Custom User Controls\CustomRoundedButtonWithImage.xaml.cs">
+      <DependentUpon>CustomRoundedButtonWithImage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Custom User Controls\CustomTextBoxWithPlaceholder.xaml.cs">
       <DependentUpon>CustomTextBoxWithPlaceholder.xaml</DependentUpon>
     </Compile>
     <Compile Include="SignupWindow.xaml.cs">
       <DependentUpon>SignupWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Utilities.cs" />
     <Page Include="Custom User Controls\CustomButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Custom User Controls\CustomButtonWithImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Custom User Controls\CustomRoundedButtonWithImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,36 +160,49 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\darkBG.jpg" />
+    <Resource Include="Icons\LogoDarkMode.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\LogoDarkMode.png" />
+    <Resource Include="Icons\darkBG.jpg" />
+    <Resource Include="Icons\lightBG.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Icons\LogoLightMode.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\blue_Politics.png" />
+    <Resource Include="Icons\A1_Test.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\blue_Automobile.png" />
-    <Resource Include="Icons\blue_Business.png" />
-    <Resource Include="Icons\blue_Education.png" />
-    <Resource Include="Icons\blue_Fashion.png" />
-    <Resource Include="Icons\blue_Health.png" />
-    <Resource Include="Icons\blue_Science.png" />
-    <Resource Include="Icons\blue_Sports.png" />
+    <Resource Include="Icons\Icon_Automobile.png" />
+    <Resource Include="Icons\Icon_Business.png" />
+    <Resource Include="Icons\Icon_Education.png" />
+    <Resource Include="Icons\Icon_Fashion.png" />
+    <Resource Include="Icons\Icon_Health.png" />
+    <Resource Include="Icons\Icon_Politics.png" />
+    <Resource Include="Icons\Icon_Science.png" />
+    <Resource Include="Icons\Icon_Sports.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\pink_Automobile.png" />
-    <Resource Include="Icons\pink_Business.png" />
-    <Resource Include="Icons\pink_Education.png" />
-    <Resource Include="Icons\pink_Fashion.png" />
-    <Resource Include="Icons\pink_Health.png" />
-    <Resource Include="Icons\pink_Politics.png" />
-    <Resource Include="Icons\pink_Science.png" />
-    <Resource Include="Icons\pink_Sports.png" />
+    <Resource Include="Icons\Icon_Bookmarked.png" />
+    <Resource Include="Icons\Icon_GoBack.png" />
+    <Resource Include="Icons\Icon_Next.png" />
+    <Resource Include="Icons\Icon_Previous.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\lightBG.jpg" />
+    <Resource Include="Icons\Icon_NotBookmarked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Icon_Read.png" />
+    <Resource Include="Icons\Icon_Unread.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Icon_NoItemsLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\A2_Test.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\A3_Test.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

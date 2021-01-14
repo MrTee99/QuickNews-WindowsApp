@@ -27,4 +27,8 @@ C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\D
 C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\SignupWindow.baml
 C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Custom User Controls\CustomTextBoxWithPlaceholder.g.cs
 C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Custom User Controls\CustomTextBoxWithPlaceholder.baml
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Custom User Controls\CustomRoundedButtonWithImage.g.cs
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Custom User Controls\CustomRoundedButtonWithImage.baml
 C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Quick News App.csprojAssemblyReference.cache
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Custom User Controls\CustomButtonWithImage.g.cs
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Custom User Controls\CustomButtonWithImage.baml

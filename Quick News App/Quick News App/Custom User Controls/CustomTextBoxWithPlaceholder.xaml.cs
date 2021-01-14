@@ -65,6 +65,7 @@ namespace Quick_News_App.Custom_User_Controls
 			set { SetValue(OutlineNormalProperty, value); }
 		}
 
+
 		public bool IsPassword
 		{
 			get { return (bool)GetValue(IsPasswordProperty); }
@@ -87,8 +88,7 @@ namespace Quick_News_App.Custom_User_Controls
 		public static readonly DependencyProperty ForegroundNormalProperty = DependencyProperty.Register("ForegroundNormal", typeof(Brush), typeof(CustomTextBoxWithPlaceholder), new PropertyMetadata(new SolidColorBrush(Colors.Black)));
 		public static readonly DependencyProperty BackgroundNormalProperty = DependencyProperty.Register("BackgroundNormal", typeof(Brush), typeof(CustomTextBoxWithPlaceholder), new PropertyMetadata(new SolidColorBrush(Colors.White)));
 		public static readonly DependencyProperty OutlineNormalProperty = DependencyProperty.Register("OutlineNormal", typeof(Brush), typeof(CustomTextBoxWithPlaceholder), new PropertyMetadata(new SolidColorBrush(Colors.Black)));
-
-
+	
 		public static readonly DependencyProperty IsPasswordProperty = DependencyProperty.Register("IsPassword", typeof(bool), typeof(CustomTextBoxWithPlaceholder), new PropertyMetadata(false));
 		public static readonly DependencyProperty cusTextBox_BorderThicknessProperty = DependencyProperty.Register("cusTextBox_BorderThickness", typeof(int), typeof(CustomTextBoxWithPlaceholder), new PropertyMetadata(1));
 

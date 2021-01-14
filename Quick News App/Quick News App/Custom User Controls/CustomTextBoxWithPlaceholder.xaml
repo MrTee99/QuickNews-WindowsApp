@@ -133,10 +133,10 @@
 		BorderBrush="{Binding OutlineNormal, ElementName=_this}"
 		Padding="{Binding CusTextBox_Padding, ElementName=_this}">
 		
-		 <!--  Shadow Effect -->
+		 <!--  Shadow Effect --><!--
 		<Border.Effect>
 			<DropShadowEffect BlurRadius="13" ShadowDepth="2" Direction="270" Color="{Binding OutlineNormal, ElementName=_this}"/>
-		</Border.Effect>
+		</Border.Effect>-->
 
 		<Grid>
 
@@ -144,7 +144,7 @@
 			<TextBlock x:Name="PlaceholderText" Style="{StaticResource PlacehholderStyle}"/>
 
 			<!-- Textbox -->
-			<TextBox x:Name="Input" Style="{StaticResource TextboxInputStyle}"/>
+			<TextBox x:Name="Input" CharacterCasing="Upper" Style="{StaticResource TextboxInputStyle}"/>
 
 			<!-- For Password Inputs -->
 			<PasswordBox x:Name="PasswordInput" PasswordChanged="PasswordInput_PasswordChanged" Style="{StaticResource PasswordboxInputStyle}"/>

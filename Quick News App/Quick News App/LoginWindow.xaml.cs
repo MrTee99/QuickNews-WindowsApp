@@ -11,45 +11,81 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Quick_News_App.Utils;
 
 namespace Quick_News_App
 {
-	/// <summary>
-	/// Interaction logic for LoginWindow.xaml
-	/// </summary>
+	
 	public partial class LoginWindow : Window
 	{
-		private Grid MainGrid;
-		private Utilities utilities = new Utilities();
+		private string adminUsername = "ADMIN";
+		private string adminPassword = "123";
 
-		private string email;
-		private string password;
+		public delegate void EventDelegate_OnLoginPressed_GetLoginInfo(bool isLoggedIn, bool isAdminLoggedIn, string LoggedInUsername);
+		public delegate void EventDelegate_OnLoginWindowClosed_RemoveBlur();
 
-		public LoginWindow(Grid MainGrid, Window OwnerWindow)
+		public event EventDelegate_OnLoginPressed_GetLoginInfo OnLoginPressed;
+		public event EventDelegate_OnLoginWindowClosed_RemoveBlur OnLoginWindowClosed;
+
+		#region Singleton Initialization
+
+		private static LoginWindow singleton = null;
+		public static LoginWindow Singleton
+		{
+			get
+			{
+				if (singleton == null)
+				{
+					singleton = new LoginWindow();
+				}
+				return singleton;
+			}
+		}
+
+		#endregion
+
+		public LoginWindow()
 		{
 			InitializeComponent();
-
-			// Setting Windwo Owner
-			this.Owner = OwnerWindow;
-
-			// Bluring background Window
-			this.MainGrid = MainGrid;
-			utilities.BlurGridEffect(MainGrid);
 		}
 
-		private void btn_Exit_Click(object sender, RoutedEventArgs e)
-		{
-			Close();
-			utilities.UndoAllGridEffects(MainGrid);
-		}
+		private void btn_Exit_Click(object sender, RoutedEventArgs e) => CloseLoginScreen();
 
 		private void DragWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => DragMove();
 
 		private void btn_Login_Click(object sender, RoutedEventArgs e)
 		{
-			email = input_LoginEmail.Text;
-			password = input_LoginPassword.PasswordInput.Password;
+			bool isLoggedIn = false;
+			bool isAdminLoggedIn = false;
+			string LoggedInUsername = "";
+
+			var username = input_LoginUsername.Text;
+			var password = input_LoginPassword.PasswordInput.Password;
+
+			if (username == adminUsername && password == adminPassword)
+			{
+				isLoggedIn = true;
+				isAdminLoggedIn = true;
+				LoggedInUsername = adminUsername;
+
+				OnLoginPressed?.Invoke(isLoggedIn, isAdminLoggedIn, LoggedInUsername);
+				CloseLoginScreen();
+			}
+			else
+			{
+				MessageBox.Show("Invalid Username or Password", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
 		}
+
+		#region Utility Methods
+
+		private void CloseLoginScreen()
+		{
+			Hide();
+			OnLoginWindowClosed?.Invoke();
+			input_LoginUsername.Text = "";
+			input_LoginPassword.PasswordInput.Password = "";
+		}
+
+		#endregion
 	}
 }

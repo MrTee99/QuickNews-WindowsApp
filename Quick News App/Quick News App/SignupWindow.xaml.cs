@@ -11,47 +11,71 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Quick_News_App.Utils;
 
 namespace Quick_News_App
 {
-	/// <summary>
-	/// Interaction logic for SignupWindow.xaml
-	/// </summary>
 	public partial class SignupWindow : Window
 	{
-		private Grid MainGrid;
-		private Utilities utilities = new Utilities();
+		public delegate void EventDelegate_OnSignUpPressed_GetSignUpInfo(string LoggedInUsername);
+		public delegate void EventDelegate_OnSignUpWindowClosed_RemoveBlur();
 
-		private string username;
-		private string email;
-		private string password;
+		public event EventDelegate_OnSignUpPressed_GetSignUpInfo OnSignupPressed;
+		public event EventDelegate_OnSignUpWindowClosed_RemoveBlur OnSignupWindowClosed;
 
-		public SignupWindow(Grid MainGrid, Window OwnerWindow)
+		#region Singleton Initialization
+
+		private static SignupWindow singleton = null;
+		public static SignupWindow Singleton
+		{
+			get
+			{
+				if (singleton == null)
+				{
+					singleton = new SignupWindow();
+				}
+				return singleton;
+			}
+		}
+
+		#endregion
+
+		public SignupWindow()
 		{
 			InitializeComponent();
-
-			// Setting Windwo Owner
-			this.Owner = OwnerWindow;
-
-			// Bluring background Window
-			this.MainGrid = MainGrid;
-			utilities.BlurGridEffect(MainGrid);
 		}
 
-		private void btn_Exit_Click(object sender, RoutedEventArgs e)
-		{
-			Close();
-			utilities.UndoAllGridEffects(MainGrid);
-		}
-
+		private void btn_Exit_Click(object sender, RoutedEventArgs e) => CloseSignupScreen();
 		private void DragWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => DragMove();
 
 		private void btn_Signup_Click(object sender, RoutedEventArgs e)
 		{
-			username = input_SignupUsername.Text;
-			email = input_SignupEmail.Text;
-			password = input_SignupPassword.PasswordInput.Password;
+			var username = input_SignupUsername.Text;
+			var email = input_SignupEmail.Text;
+			var password = input_SignupPassword.PasswordInput.Password;
+			
+			if (username == "" || email == "" || password == "")
+			{
+				MessageBox.Show("Invalid Username, Email or Password", "Signup Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+			else
+			{
+				// Perform Signup here and then login user as well
+				OnSignupPressed?.Invoke(username);
+				CloseSignupScreen();
+			}
 		}
+
+		#region Utility Methods
+
+		private void CloseSignupScreen()
+		{
+			Hide();
+			OnSignupWindowClosed?.Invoke();
+			input_SignupUsername.Text = "";
+			input_SignupEmail.Text = "";
+			input_SignupPassword.PasswordInput.Password = "";
+		}
+
+		#endregion
 	}
 }

@@ -6,6 +6,7 @@
 	<Color x:Key="Form_BorderColor">#000000</Color>
 
 	<Color x:Key="TextColor">#f7f7f7</Color>
+	<Color x:Key="HeadlineTextColor">#E94560</Color>
 
 	<Color x:Key="ButtonColor_Normal">#E94560</Color>
 	<Color x:Key="ButtonColor_Hover">#cd1836</Color>
@@ -24,20 +25,34 @@
 
 	<Color x:Key="TextBoxColor_Outline">#E94560</Color>
 	<Color x:Key="TextBoxColor_Hint">#b3b3b3</Color>
-	<Color x:Key="TextBoxColor_Foreground">#393E46</Color>
+	<Color x:Key="TextBoxColor_Foreground">#595959</Color>
+
+	<Color x:Key="AdminPanelMenu_Color">#E94560</Color>
+	<Color x:Key="AdminPanelMenu_AlternateColor">#313131</Color>
 
 	<BitmapImage x:Key="MainBackgorundImage" UriSource="..\Icons\darkBG.jpg"></BitmapImage>
 	
 	<BitmapImage x:Key="LogoSource" UriSource="..\Icons\LogoDarkMode.png"></BitmapImage>
+
+	<BitmapImage x:Key="icon_Politics" UriSource="..\Icons\Icon_Politics.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Sports" UriSource="..\Icons\Icon_Sports.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Business" UriSource="..\Icons\Icon_Business.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Science" UriSource="..\Icons\Icon_Science.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Automobile" UriSource="..\Icons\Icon_Automobile.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Fashion" UriSource="..\Icons\Icon_Fashion.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Health" UriSource="..\Icons\Icon_Health.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Education" UriSource="..\Icons\Icon_Education.png"></BitmapImage>
+
+	<BitmapImage x:Key="icon_GoBack" UriSource="..\Icons\Icon_GoBack.png"></BitmapImage>
 	
-	<BitmapImage x:Key="icon_Politics" UriSource="..\Icons\pink_Politics.png"></BitmapImage>
-	<BitmapImage x:Key="icon_Sports" UriSource="..\Icons\pink_Sports.png"></BitmapImage>
-	<BitmapImage x:Key="icon_Business" UriSource="..\Icons\pink_Business.png"></BitmapImage>
-	<BitmapImage x:Key="icon_Science" UriSource="..\Icons\pink_Science.png"></BitmapImage>
-	<BitmapImage x:Key="icon_Automobile" UriSource="..\Icons\pink_Automobile.png"></BitmapImage>
-	<BitmapImage x:Key="icon_Fashion" UriSource="..\Icons\pink_Fashion.png"></BitmapImage>
-	<BitmapImage x:Key="icon_Health" UriSource="..\Icons\pink_Health.png"></BitmapImage>
-	<BitmapImage x:Key="icon_Education" UriSource="..\Icons\pink_Education.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Next" UriSource="..\Icons\Icon_Next.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Previous" UriSource="..\Icons\Icon_Previous.png"></BitmapImage>
+
+	<BitmapImage x:Key="icon_Bookmarked" UriSource="..\Icons\Icon_Bookmarked.png"></BitmapImage>
+	<BitmapImage x:Key="icon_NotBookmarked" UriSource="..\Icons\Icon_NotBookmarked.png"></BitmapImage>
+
+	<BitmapImage x:Key="icon_Unread" UriSource="..\Icons\Icon_Unread.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Read" UriSource="..\Icons\Icon_Read.png"></BitmapImage>
 
 	<!-- 
 	Darkest = #222831

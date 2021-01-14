@@ -33,6 +33,14 @@
 		</Setter>
 	</Style>
 
+	<Style TargetType="TextBlock" x:Key="FG_Headline_TextBlock">
+		<Setter Property="Foreground">
+			<Setter.Value>
+				<SolidColorBrush Color="{DynamicResource HeadlineTextColor}"/>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
 	<Style TargetType="local:CustomButton" x:Key="CustomButtonColor">
 		<Setter Property="CusBtn_Background">
 			<Setter.Value>
@@ -69,6 +77,32 @@
 				<RadialGradientBrush>
 					<GradientStop Color="{DynamicResource TextBoxColor_Foreground}"/>
 				</RadialGradientBrush>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style TargetType="local:CustomRoundedButtonWithImage" x:Key="RoundImageButtonColor">
+		<Setter Property="BackgroundColor">
+			<Setter.Value>
+				<SolidColorBrush Color="{DynamicResource ButtonColor_Normal}"/>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="HoverColor">
+			<Setter.Value>
+				<SolidColorBrush Color="{DynamicResource ButtonColor_Hover}"/>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style TargetType="local:CustomButtonWithImage" x:Key="NormalImageButtonColor">
+		<Setter Property="BackgroundColor">
+			<Setter.Value>
+				<SolidColorBrush Color="{DynamicResource ButtonColor_Normal}"/>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="HoverColor">
+			<Setter.Value>
+				<SolidColorBrush Color="{DynamicResource ButtonColor_Hover}"/>
 			</Setter.Value>
 		</Setter>
 	</Style>
