@@ -65,10 +65,14 @@ namespace Quick_News_App
 			{
 				isLoggedIn = true;
 				isAdminLoggedIn = true;
-				LoggedInUsername = adminUsername;
+				LoggedInUsername = username;
 
 				OnLoginPressed?.Invoke(isLoggedIn, isAdminLoggedIn, LoggedInUsername);
 				CloseLoginScreen();
+			}
+			else if (isLoggedIn)
+			{ 
+				// user login check here 
 			}
 			else
 			{

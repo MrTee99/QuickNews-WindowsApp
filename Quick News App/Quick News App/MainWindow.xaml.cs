@@ -18,6 +18,18 @@ using Quick_News_App.Modules;
 
 namespace Quick_News_App
 {
+	public class NewsFeedData
+	{ 
+		public Image img { get; set; }
+		public string headline { get; set; }		// 80 letters max
+		public string news { get; set; }			// 250 letters max
+		public string newsLink { get; set; }		
+		public bool isBookmarked { get; set; }		
+		public bool isMarkedAsRead { get; set; }		
+	}
+
+	// Get Data from database and store them all in list_NewsFeedData in Constructor [MainWindow()] and set totalNews = list_NewsFeedData.Count
+	// Go to btn_NewsFeed_Next_MouseDown() and btn_NewsFeed_Previous_MouseDown()
 
 	public partial class MainWindow : Window
 	{
@@ -25,6 +37,8 @@ namespace Quick_News_App
 		private bool isAdminLoggedIn = false;
 		private string LoggedInUsername = "";
 		private string DefaultUsername = "Guest";
+
+		private List<NewsFeedData> list_NewsFeedData = new List<NewsFeedData>();
 
 		private List<string> imgList_NewsFeedTest = new List<string>();
 		private List<string> headlineList_NewsFeedTest = new List<string>();
@@ -37,9 +51,9 @@ namespace Quick_News_App
 			InitializeComponent();
 			SubscribingEvents();
 			btn_ThemeSwitcher.InitializeToggleSwitch(true);
-
 			UpdateLoginLogoutAndSignupAdminPanelButtonsUI();
 
+			// Sample Data Start
 			imgList_NewsFeedTest.Add(@"C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\Icons\A1_Test.jpg");
 			imgList_NewsFeedTest.Add(@"C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\Icons\A2_Test.jpg");
 			imgList_NewsFeedTest.Add(@"C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\Icons\A3_Test.jpg");
@@ -51,7 +65,9 @@ namespace Quick_News_App
 			newsList_NewsFeedTest.Add("This is the News 01. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et luctus quam. Nunc sit amet vulputate mauris. Nulla facilisi. Maecenas. Lorem ipsum dolor sit amet, consectetur orem ipsum dolor sit amet, consectetur consectetur.....");
 			newsList_NewsFeedTest.Add("This is the News 02. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et luctus quam. Nunc sit amet vulputate mauris. Nulla facilisi. Maecenas. Lorem ipsum dolor sit amet, consectetur orem ipsum dolor sit amet, consectetur consectetur.....");
 			newsList_NewsFeedTest.Add("This is the News 03. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et luctus quam. Nunc sit amet vulputate mauris. Nulla facilisi. Maecenas. Lorem ipsum dolor sit amet, consectetur orem ipsum dolor sit amet, consectetur consectetur.....");
+			// Sample Data End
 
+			// get all news data from database and store it in list_NewsFeedData
 			totalNews = imgList_NewsFeedTest.Count;
 		}
 
@@ -190,8 +206,8 @@ namespace Quick_News_App
 			if (currentNews < (totalNews - 1))
 			{
 				currentNews++;
-				img_NewsFeed.Source = new BitmapImage(new Uri(imgList_NewsFeedTest[currentNews]));
-				txt_NewsFeed_Headline.Text = headlineList_NewsFeedTest[currentNews];
+				img_NewsFeed.Source = new BitmapImage(new Uri(imgList_NewsFeedTest[currentNews]));  // list_NewsFeedData[currentNews].img;
+				txt_NewsFeed_Headline.Text = headlineList_NewsFeedTest[currentNews];                // list_NewsFeedData[currentNews].headline;
 				txt_NewsFeed_News.Text = newsList_NewsFeedTest[currentNews];
 			}
 
@@ -207,7 +223,7 @@ namespace Quick_News_App
 			if (currentNews != 0)
 			{
 				currentNews--;
-				img_NewsFeed.Source = new BitmapImage(new Uri(imgList_NewsFeedTest[currentNews]));
+				img_NewsFeed.Source = new BitmapImage(new Uri(imgList_NewsFeedTest[currentNews]));		// same thing here
 				txt_NewsFeed_Headline.Text = headlineList_NewsFeedTest[currentNews];
 				txt_NewsFeed_News.Text = newsList_NewsFeedTest[currentNews];
 			}
