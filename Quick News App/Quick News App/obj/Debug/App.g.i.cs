@@ -74,6 +74,8 @@ namespace Quick_News_App {
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
         public static void Main() {
+            SplashScreen splashScreen = new SplashScreen("icons/splashscreen.png");
+            splashScreen.Show(true);
             Quick_News_App.App app = new Quick_News_App.App();
             app.InitializeComponent();
             app.Run();

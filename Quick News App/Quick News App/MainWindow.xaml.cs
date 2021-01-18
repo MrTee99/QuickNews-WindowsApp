@@ -44,7 +44,7 @@ namespace Quick_News_App
 		{
 			InitializeComponent();
 			SubscribingEvents();
-			btn_ThemeSwitcher.InitializeToggleSwitch(true);
+			btn_ThemeSwitcher.InitializeToggleSwitch(false);
 			UpdateLoginLogoutAndSignupAdminPanelButtonsUI();
 
 			LoadCategoryDataInComboBox(combobox_AddAndUpdateNews_Category);

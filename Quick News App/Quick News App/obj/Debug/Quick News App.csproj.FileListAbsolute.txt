@@ -37,3 +37,8 @@ C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\D
 C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Quick News.g.resources
 C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Quick News.exe
 C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Quick News.pdb
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\bin\Debug\Quick News.exe.manifest
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\bin\Debug\Quick News.application
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Quick News.TrustInfo.xml
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Quick News.exe.manifest
+C:\Users\MrTee\Desktop\Fall 2020\VPL\Project\Quick News App\Quick News App\obj\Debug\Quick News.application
