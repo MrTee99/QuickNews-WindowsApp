@@ -76,7 +76,7 @@ namespace Quick_News_App.Custom_User_Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Quick News App;component/custom%20user%20controls/custombuttonwithimage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Quick News;component/custom%20user%20controls/custombuttonwithimage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Custom User Controls\CustomButtonWithImage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

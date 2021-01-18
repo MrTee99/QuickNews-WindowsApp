@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Quick_News_App.Custom_User_Controls"
-        mc:Ignorable="d"
+		Icon="Icon.ico"
+		mc:Ignorable="d"
 		WindowStyle="None" ResizeMode="NoResize"
 		AllowsTransparency="True" Background="Transparent"
 		WindowStartupLocation="CenterScreen"
@@ -46,7 +47,7 @@
 
 					<!-- Title -->
 					<TextBlock x:Name="windowTitle"
-					Grid.Row="1" Grid.Column="1"
+					Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
 					Text="Quick News" FontSize="25" FontWeight="Black"
 					Foreground="White"	 
 					VerticalAlignment="Center"
@@ -160,13 +161,13 @@
 									<TextBlock x:Name="txt_WelcomeMessage"
 											   Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="2"
 											   Margin="8 2 0 0"
-											   Text="Welcome, Guest" FontSize="40" FontWeight="Black"
+											   Text="Welcome, guest" FontSize="40" FontWeight="Black"
 											   Style="{StaticResource FG_TextBlock}"
 											   VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
 								</Grid>
 							</TabItem>
-							
+
 							<!-- All Other Screens Upper Body Tab -->
 							<TabItem x:Name="tab_AllOtherScreens_UpperPart">
 								<Grid>
@@ -265,7 +266,7 @@
 						</Grid>
 
 					</Grid>
-					
+
 					<!-- Body Part - Tab for Different Screens -->
 					<TabControl x:Name="TabControl_MainWindow" 
 								Grid.Column="1" Grid.Row="2" Grid.RowSpan="10"
@@ -299,27 +300,55 @@
 									<RowDefinition/>
 								</Grid.RowDefinitions>
 
-								<!-- Lower Part - Search Bar -->
-								<StackPanel Grid.Row="0" Grid.RowSpan="2"
-											HorizontalAlignment="Right"
-											Orientation="Horizontal">
+								<!-- Top Part - Search Bar -->
+								<Grid Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Top" Margin="0 5 0 0">
 
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition/>
+										<ColumnDefinition/>
+										<ColumnDefinition/>
+										<ColumnDefinition/>
+										<ColumnDefinition/>
+									</Grid.ColumnDefinitions>
+
+									<!-- Search Button -->
 									<local:CustomButton x:Name="btn_Search" Click="btn_Search_Click"
-													CusBtn_CornerRadius="10 0 0 10"
-													CusBtn_Padding="30 0 30 0" CusBtn_Margin="5 8 0 8"
+													Grid.Column="1" HorizontalAlignment="Left"
+													CusBtn_CornerRadius="10"
+													CusBtn_Padding="20 0 60 0" CusBtn_Margin="5 1 0 2.5"
 													Style="{StaticResource CustomButtonColor}"
 													CusBtn_Content="Search" FontSize="30" FontWeight="Black"/>
 
-									<local:CustomTextBoxWithPlaceholder x:Name="input_SearchNews"
-															cusTextBox_BorderThickness="4"
-															Height="52.5" Width="525"
-															FontSize="20" FontWeight="DemiBold"
-															Placeholder="Search News..."
-															Style="{StaticResource CustomTextboxColor}"
-															CornerRadius="0 10 10 0"
-															CusTextBox_Padding="10 0" Margin="0 0 10 0"/>
+									<!-- Search Input -->
+									<Grid Grid.Column="1" Grid.ColumnSpan="4" Margin="0 2 6 5" HorizontalAlignment="Right">
+										<Border Width="545" Height="49"
+												   Background="white" BorderThickness="5" BorderBrush="{DynamicResource TextBoxColor_Stroke}"
+												   CornerRadius="20 10 10 20"/>
+										<TextBox  x:Name="input_SearchNews"
+												  Width="508" Height="48"  
+												  Margin="20 0" Padding="0 12" CharacterCasing="Upper"
+												  FontSize="25" FontWeight="DemiBold"
+												  Background="Transparent" Foreground="{DynamicResource TextBoxColor_Text}"
+												  BorderThickness="0" BorderBrush="Transparent"/>
+										<TextBlock IsHitTestVisible="False" 
+												   Text="Search News..." 
+												   VerticalAlignment="Center" HorizontalAlignment="Left" 
+												   Margin="20 0" Foreground="{DynamicResource TextBoxColor_Placeholder}"
+												   FontSize="25" FontWeight="DemiBold">
+											<TextBlock.Style>
+												<Style TargetType="{x:Type TextBlock}">
+													<Setter Property="Visibility" Value="Collapsed"/>
+													<Style.Triggers>
+														<DataTrigger Binding="{Binding Text, ElementName=input_SearchNews}" Value="">
+															<Setter Property="Visibility" Value="Visible"/>
+														</DataTrigger>
+													</Style.Triggers>
+												</Style>
+											</TextBlock.Style>
+										</TextBlock>
+									</Grid>
 
-								</StackPanel>
+								</Grid>
 
 								<!-- Middle Part -->
 								<Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Margin="0 35">
@@ -332,7 +361,7 @@
 										<RowDefinition/>
 									</Grid.RowDefinitions>
 
-									<!-- My Feed -->
+									<!-- News Feed -->
 									<local:CustomButton x:Name="btn_NewsFeed" Click="btn_NewsFeed_Click"
 														Grid.Row="0" Grid.RowSpan="3"
 														CusBtn_CornerRadius="20 20 0 0"
@@ -346,19 +375,21 @@
 											<ColumnDefinition/>
 										</Grid.ColumnDefinitions>
 
-										<!-- Bookmarks -->
-										<local:CustomButton x:Name="btn_ReadHistory" Click="btn_ReadHistory_Click"
+										<!-- Read History -->
+										<local:CustomButton x:Name="btn_Bookmark" Click="btn_Bookmark_Click"
 											Grid.Column="0"
 											CusBtn_CornerRadius="0 0 0 20"
 											CusBtn_Foreground="{DynamicResource ButtonColorBrush_Text}" CusBtn_Background="{DynamicResource ButtonColor3_Normal}" CusBtn_Hover="{DynamicResource ButtonColor3_Hover}"
-											CusBtn_Content="Bookmarks" FontSize="30" FontWeight="Black"/>
+											CusBtn_Content="My Bookmarks" FontSize="30" FontWeight="Black"/>
 
-										<!-- Read History -->
-										<local:CustomButton x:Name="btn_Bookmark" Click="btn_Bookmark_Click"
+
+										<!-- Bookmarks -->
+										<local:CustomButton x:Name="btn_ReadHistory" Click="btn_ReadHistory_Click"
 											Grid.Column="1"
 											CusBtn_CornerRadius="0 0 20 0"
 											CusBtn_Foreground="{DynamicResource ButtonColorBrush_Text}" CusBtn_Background="{DynamicResource ButtonColor4_Normal}" CusBtn_Hover="{DynamicResource ButtonColor4_Hover}"
-											CusBtn_Content="Read History" FontSize="30" FontWeight="Black"/>
+											CusBtn_Content="My Read History" FontSize="30" FontWeight="Black"/>
+
 
 									</Grid>
 
@@ -396,7 +427,7 @@
 											<ColumnDefinition/>
 										</Grid.ColumnDefinitions>
 
-										<local:CustomRoundedButtonWithImage x:Name="btn_cat_Politics"  MouseDown="btn_cat_Politics_MouseUp"
+										<local:CustomRoundedButtonWithImage x:Name="btn_cat_Politics"  MouseUp="btn_cat_Politics_MouseUp"
 																			Grid.Column="0" Margin="5"
 																			Style="{StaticResource RoundImageButtonColor}"
 																			ImageSource="{DynamicResource icon_Politics}" EllipsePadding="5"/>
@@ -501,15 +532,48 @@
 										<RowDefinition Height="10"/>
 									</Grid.RowDefinitions>
 
-									<Grid Grid.Column="1" Grid.Row="1">
+									<Grid x:Name="NewsFeed_NewsNotAvailable" Grid.Row="1" Grid.Column="1" Visibility="Hidden">
+
+										<StackPanel Orientation="Horizontal"
+													HorizontalAlignment="Center" VerticalAlignment="Center"
+													Margin="80">
+
+											<Image Source="{DynamicResource icon_Sad}"
+											   HorizontalAlignment="Center"
+											   VerticalAlignment="Center"/>
+
+											<StackPanel Orientation="Vertical">
+
+												<TextBlock Text="No News" 
+													   VerticalAlignment="Top" HorizontalAlignment="Center"
+													   Margin="10"
+													   FontSize="80"
+													   Style="{StaticResource FG_TextBlock}"/>
+
+												<TextBlock Text="Found!" 
+													   VerticalAlignment="Top" HorizontalAlignment="Center"
+													   Margin="10"
+													   FontSize="80"
+													   Style="{StaticResource FG_TextBlock}"/>
+
+											</StackPanel>
+
+
+										</StackPanel>
+
+									</Grid>
+
+									<Grid x:Name="NewsFeed_ShowNews" Grid.Column="1" Grid.Row="1">
 
 										<Grid.ColumnDefinitions>
 											<ColumnDefinition/>
 											<ColumnDefinition/>
 										</Grid.ColumnDefinitions>
 
-										<!-- Remove Stretch When Implementing -->
-										<Image x:Name="img_NewsFeed" Grid.Column="0" Source="Icons/A1_Test.jpg" Stretch="Fill"/>
+										<!-- Image -->
+										<Rectangle Grid.Column="0" Fill="#4d4d4d" Margin="6"/>
+										<Image x:Name="img_NewsFeed" Grid.Column="0" Stretch="Uniform" Margin="6"/>
+										<Border Grid.Column="0" CornerRadius="15" BorderBrush="{DynamicResource TextBoxColor_Stroke}" BorderThickness="7"/>
 
 										<Grid Grid.Column="1">
 
@@ -545,6 +609,13 @@
 											   Margin="0 10 0 0"
 											   TextWrapping="WrapWithOverflow"
 											   Text="This is the News. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et luctus quam. Nunc sit amet vulputate mauris. Nulla facilisi. Maecenas. Lorem ipsum dolor sit amet, consectetur orem ipsum dolor sit amet, consectetur consectetur....." />
+
+												<!-- Category Name -->
+												<TextBlock x:Name="txt_NewsFeed_Category" Style="{StaticResource FG_Category_TextBlock}"
+											   FontSize="15" FontWeight="Bold"
+											   Margin="0 10 0 0"
+											   TextWrapping="WrapWithOverflow"
+											   Text="Category - Politics"/>
 
 											</StackPanel>
 
@@ -582,7 +653,7 @@
 
 							</Grid>
 						</TabItem>
-						
+
 						<!-- Admin Panel Screen Body Tab -->
 						<TabItem x:Name="tab_AdminPanelScreen">
 							<Grid>
@@ -628,7 +699,7 @@
 										<RowDefinition/>
 										<RowDefinition/>
 									</Grid.RowDefinitions>
-									
+
 									<Rectangle Grid.Row="0" Grid.RowSpan="11" RadiusX="20" RadiusY="20" Margin="0 10 0 0">
 										<Rectangle.Fill>
 											<SolidColorBrush Color="{DynamicResource AdminPanelMenu_Color}"/>
@@ -643,28 +714,28 @@
 											   Margin="10 0 0 0"
 											   Text="News" Foreground="White" FontSize="30"/>
 
-									<local:CustomButton x:Name="btn_AddNews"
+									<local:CustomButton x:Name="btn_OpenAddNewsTab" Click="btn_OpenAddNewsTab_Click"
 														Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left"
 														CusBtn_CornerRadius="0"
 														CusBtn_Padding="20 4 163 4" CusBtn_Margin="0 1.5 0 0"
 														Style="{StaticResource CustomButtonColor}"
 														CusBtn_Content="Add News" FontSize="20" FontWeight="Black"/>
 
-									<local:CustomButton x:Name="btn_UpdateNews"
+									<local:CustomButton x:Name="btn_OpenUpdateNewsTab" Click="btn_OpenUpdateNewsTab_Click"
 														Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left"
 														CusBtn_CornerRadius="0"
 														CusBtn_Padding="20 4 140 4" CusBtn_Margin="0 1.5 0 0"
 														Style="{StaticResource CustomButtonColor}"
 														CusBtn_Content="Update News" FontSize="20" FontWeight="Black"/>
 
-									<local:CustomButton x:Name="btn_DeleteNews"
+									<local:CustomButton x:Name="btn_OpenDeleteNewsTab" Click="btn_OpenDeleteNewsTab_Click"
 														Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left"
 														CusBtn_CornerRadius="0"
 														CusBtn_Padding="20 4 138 4" CusBtn_Margin="0 1.5 0 0"
 														Style="{StaticResource CustomButtonColor}"
 														CusBtn_Content="Delete News" FontSize="20" FontWeight="Black"/>
 
-									<local:CustomButton x:Name="btn_ViewNews"
+									<local:CustomButton x:Name="btn_OpenViewAllNewsTab" Click="btn_OpenViewAllNewsTab_Click"
 														Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Left"
 														CusBtn_CornerRadius="0"
 														CusBtn_Padding="20 4 125 4" CusBtn_Margin="0 1.5 0 0"
@@ -675,33 +746,1102 @@
 											   Margin="10 0 0 0"
 											   Text="Users" Foreground="White" FontSize="30"/>
 
-									<local:CustomButton x:Name="btn_DeleteUser"
+									<local:CustomButton x:Name="btn_OpenDeleteUserTab" Click="btn_OpenDeleteUserTab_Click"
 														Grid.Row="8" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left"
 														CusBtn_CornerRadius="0"
 														CusBtn_Padding="20 4 142 4" CusBtn_Margin="0 1.5 0 0"
 														Style="{StaticResource CustomButtonColor}"
 														CusBtn_Content="Delete User" FontSize="20" FontWeight="Black"/>
 
-									<local:CustomButton x:Name="btn_ViewUsers"
+									<local:CustomButton x:Name="btn_OpenViewAllUsersTab" Click="btn_OpenViewAllUsersTab_Click"
 														Grid.Row="9" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left"
 														CusBtn_CornerRadius="0"
-														CusBtn_Padding="20 4 130 4" CusBtn_Margin="0 1.5 0 0"
+														CusBtn_Padding="20 4 120 4" CusBtn_Margin="0 1.5 0 0"
 														Style="{StaticResource CustomButtonColor}"
-														CusBtn_Content="View All User" FontSize="20" FontWeight="Black"/>
+														CusBtn_Content="View All Users" FontSize="20" FontWeight="Black"/>
 
 								</Grid>
 
 								<Grid Grid.Column="4" Grid.ColumnSpan="7" Grid.Row="0" Grid.RowSpan="9">
 
-									<Rectangle Grid.Row="0" Grid.RowSpan="11" RadiusX="20" RadiusY="20" Margin="10 10 0 0">
-										<Rectangle.Fill>
-											<SolidColorBrush Color="{DynamicResource AdminPanelMenu_AlternateColor}"/>
-										</Rectangle.Fill>
-									</Rectangle>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="10"/>
+										<ColumnDefinition/>
+										<ColumnDefinition Width="10"/>
+									</Grid.ColumnDefinitions>
+
+									<TabControl x:Name="TabControl_AdminPanel" 
+												Grid.Column="1"
+												BorderThickness="0" Background="Transparent">
+
+										<!-- Resource Style To Hide Actual Tabs -->
+										<TabControl.Resources>
+											<Style TargetType="TabItem">
+												<Setter Property="Template">
+													<Setter.Value>
+														<ControlTemplate TargetType="TabItem">
+														</ControlTemplate>
+													</Setter.Value>
+												</Setter>
+											</Style>
+										</TabControl.Resources>
+
+										<TabItem x:Name="tab_AddNews">
+
+											<Grid>
+												<Grid.RowDefinitions>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+												</Grid.RowDefinitions>
+
+
+												<TextBlock x:Name="txt_AddAndUpdateNews_Heading" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center"
+													       Margin="10 10 0 20"
+														   Text="Add News" Style="{StaticResource FG_TextBlock}" FontSize="50"/>
+
+
+												<!-- Headline Input -->
+												<Grid HorizontalAlignment="Center" Grid.Row="1" Grid.RowSpan="3" Margin="0 10 0 0">
+													<Rectangle Height="60"
+																	Fill="white" StrokeThickness="3" Stroke="{DynamicResource TextBoxColor_Stroke}"
+																	RadiusX="10" RadiusY="10" Margin="10 0"/>
+													<TextBox  x:Name="input_AddAndUpdatenews_Headline" 
+																	Width="490" Height="50" VerticalAlignment="Center"
+																    MaxLength="80" TextWrapping="Wrap"
+																	Margin="20 0" Padding="0 5"
+																	FontSize="20" FontWeight="DemiBold" CharacterCasing="Upper"
+																	Background="Transparent" Foreground="{DynamicResource TextBoxColor_Text}"
+																	BorderThickness="0" BorderBrush="Transparent"/>
+													<TextBlock IsHitTestVisible="False" 
+																	Text="Headline" 
+																	HorizontalAlignment="Left" 
+																	Margin="20 30" Foreground="{DynamicResource TextBoxColor_Placeholder}"
+																	FontSize="20" FontWeight="DemiBold">
+														<TextBlock.Style>
+															<Style TargetType="{x:Type TextBlock}">
+																<Setter Property="Visibility" Value="Collapsed"/>
+																<Style.Triggers>
+																	<DataTrigger Binding="{Binding Text, ElementName=input_AddAndUpdatenews_Headline}" Value="">
+																		<Setter Property="Visibility" Value="Visible"/>
+																	</DataTrigger>
+																</Style.Triggers>
+															</Style>
+														</TextBlock.Style>
+													</TextBlock>
+												</Grid>
+
+												<!-- Link Input -->
+												<Grid HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3" Grid.RowSpan="3" Margin="20 25">
+													<Rectangle Height="40" Width="300" HorizontalAlignment="Left"
+																	Fill="white" StrokeThickness="3" Stroke="{DynamicResource TextBoxColor_Stroke}"
+																	RadiusX="10" RadiusY="10"/>
+													<TextBox  x:Name="input_AddAndUpdateNews_link"
+																	Width="280" Height="35" VerticalAlignment="Center"
+																	Margin="10 0"  Padding="0 8"
+																	FontSize="20" FontWeight="DemiBold"
+																	Background="Transparent" Foreground="{DynamicResource TextBoxColor_Text}"
+																	BorderThickness="0" BorderBrush="Transparent"/>
+													<TextBlock IsHitTestVisible="False" 
+																	Text="Webiste Link of the News" 
+																	HorizontalAlignment="Left" 
+																	Margin="10 0" Padding="0 10" Foreground="{DynamicResource TextBoxColor_Placeholder}"
+																	FontSize="20" FontWeight="DemiBold">
+														<TextBlock.Style>
+															<Style TargetType="{x:Type TextBlock}">
+																<Setter Property="Visibility" Value="Collapsed"/>
+																<Style.Triggers>
+																	<DataTrigger Binding="{Binding Text, ElementName=input_AddAndUpdateNews_link}" Value="">
+																		<Setter Property="Visibility" Value="Visible"/>
+																	</DataTrigger>
+																</Style.Triggers>
+															</Style>
+														</TextBlock.Style>
+													</TextBlock>
+												</Grid>
+
+												<!-- Category Input -->
+												<Grid HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="3" Grid.RowSpan="2">
+
+													<ComboBox x:Name="combobox_AddAndUpdateNews_Category" 
+														  Style="{StaticResource ComboBoxFlatStyle}" FontSize="20"
+														  Margin="0,25,20,1" Padding="85 28 0 0" Width="205" Height="38.5"/>
+													<TextBlock IsHitTestVisible="False" 
+																	Text="Category" 
+																	HorizontalAlignment="Left" 
+																	Margin="10,25,0,0" Padding="0 10" Foreground="{DynamicResource TextBoxColor_Placeholder}"
+																	FontSize="20" FontWeight="DemiBold">
+														<TextBlock.Style>
+															<Style TargetType="{x:Type TextBlock}">
+																<Setter Property="Visibility" Value="Collapsed"/>
+																<Style.Triggers>
+																	<DataTrigger Binding="{Binding SelectedIndex, ElementName=combobox_AddAndUpdateNews_Category}" Value="-1">
+																		<Setter Property="Visibility" Value="Visible"/>
+																	</DataTrigger>
+																</Style.Triggers>
+															</Style>
+														</TextBlock.Style>
+													</TextBlock>
+
+												</Grid>
+
+												<!-- Image Input -->
+												<Grid Grid.Row="5" Grid.RowSpan="5" Margin="20,3.5,335,14">
+
+													<Grid.RowDefinitions>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+													</Grid.RowDefinitions>
+
+													<Border Grid.Row="0" Grid.RowSpan="3" Margin="4 2.5" Background="{DynamicResource AdminPanelMenu_AlternateColor}"/>
+													<Image x:Name="img_AddAndUpdateNews" Grid.Row="0" Grid.RowSpan="3" Margin="4 2.5" Stretch="Uniform"/>
+													<Border Grid.Row="0" Grid.RowSpan="3" CornerRadius="8 8 0 0" BorderThickness="4" BorderBrush="{DynamicResource TextBoxColor_Stroke}"/>
+
+													<local:CustomButton x:Name="btn_AddNews_OpenImage" Click="btn_AddNews_OpenImage_Click"
+																	Grid.Row="3" CusBtn_Padding="7 0 7 1"
+																	CusBtn_Content="Open Image" FontSize="20"
+																	CusBtn_CornerRadius=" 0 0 8 8"
+																	Style="{StaticResource CustomButtonColor}"/>
+
+												</Grid>
+
+												<!-- News Input -->
+												<Grid HorizontalAlignment="Right" Grid.Row="4" Grid.RowSpan="6" Margin="217 0 10 25">
+													<Rectangle Height="115" Width=" 300"
+																	Fill="white" StrokeThickness="3" Stroke="{DynamicResource TextBoxColor_Stroke}"
+																	RadiusX="10" RadiusY="10" Margin="10 0"/>
+													<TextBox  x:Name="input_AddAndUpdateNewws_News"  
+																	Width="280" Height="105" VerticalAlignment="Center"
+																    MaxLength="200" TextWrapping="Wrap"
+																	Margin="20 0" Padding="0 6"
+																	FontSize="20" FontWeight="DemiBold" CharacterCasing="Upper"
+																	Background="Transparent" Foreground="{DynamicResource TextBoxColor_Text}"
+																	BorderThickness="0" BorderBrush="Transparent"/>
+													<TextBlock IsHitTestVisible="False" 
+																	Text="News" 
+																	HorizontalAlignment="Left" 
+																	Margin="20 50" Foreground="{DynamicResource TextBoxColor_Placeholder}"
+																	FontSize="20" FontWeight="DemiBold">
+														<TextBlock.Style>
+															<Style TargetType="{x:Type TextBlock}">
+																<Setter Property="Visibility" Value="Collapsed"/>
+																<Style.Triggers>
+																	<DataTrigger Binding="{Binding Text, ElementName=input_AddAndUpdateNewws_News}" Value="">
+																		<Setter Property="Visibility" Value="Visible"/>
+																	</DataTrigger>
+																</Style.Triggers>
+															</Style>
+														</TextBlock.Style>
+													</TextBlock>
+												</Grid>
+
+												<!-- Add News Button - CusBtn_Padding="91 7" -->
+												<local:CustomButton x:Name="btn_AddAndUpdateNews" Click="btn_AddAndUpdateNews_Click"
+																	Grid.Row="8" Grid.RowSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center"
+																	Margin="0 3 20 0"
+																	CusBtn_CornerRadius="10"
+																	CusBtn_Padding="106 7"
+																	Style="{StaticResource CustomButtonColor}"
+																	CusBtn_Content="Add News" FontSize="28"/>
+
+											</Grid>
+
+										</TabItem>
+
+										<TabItem x:Name="tab_UpdateNews">
+
+											<Grid>
+
+												<Grid.RowDefinitions>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+												</Grid.RowDefinitions>
+
+												<TextBlock Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center"
+													       Margin="10 10 0 20"
+														   Text="Update News" Style="{StaticResource FG_TextBlock}" FontSize="50"/>
+
+
+												<Grid x:Name="UpdateNews_NewsNotAvailable" Grid.Row="2" Grid.RowSpan="9" Visibility="Hidden">
+
+													<StackPanel Orientation="Horizontal"
+													HorizontalAlignment="Center" VerticalAlignment="Center"
+													Margin="80">
+
+														<Image Source="{DynamicResource icon_Sad}"
+															   HorizontalAlignment="Center"
+															   VerticalAlignment="Center"/>
+
+														<StackPanel Orientation="Vertical" VerticalAlignment="Center">
+
+															<TextBlock Text="No News" 
+																		VerticalAlignment="Top" HorizontalAlignment="Center"
+																		Margin="10"
+																		FontSize="55"
+																		Style="{StaticResource FG_TextBlock}"/>
+
+															<TextBlock Text="Found!" 
+																		VerticalAlignment="Top" HorizontalAlignment="Center"
+																		Margin="10"
+																		FontSize="55"
+																		Style="{StaticResource FG_TextBlock}"/>
+
+														</StackPanel>
+
+
+													</StackPanel>
+
+												</Grid>
+
+
+												<ScrollViewer Grid.Row="2" Grid.RowSpan="8"  VerticalScrollBarVisibility="Hidden">
+
+													<ItemsControl x:Name="itemsControl_UpdateNews">
+
+														<ItemsControl.ItemTemplate>
+															<DataTemplate>
+																<Grid Height="100" Width="531"  Margin="0 0 0 10">
+
+																	<Border Background="{DynamicResource TextBoxColor_Stroke}" CornerRadius="18" />
+																	<Border BorderBrush="{DynamicResource ButtonColor1_Normal}" BorderThickness="5" CornerRadius="15" />
+
+																	<Grid>
+
+																		<Grid.ColumnDefinitions>
+																			<ColumnDefinition/>
+																			<ColumnDefinition/>
+																			<ColumnDefinition/>
+																			<ColumnDefinition/>
+																		</Grid.ColumnDefinitions>
+
+																		<!-- Image -->
+																		<Rectangle Grid.Column="0" Fill="{DynamicResource ButtonColor1_Hover}" Margin="15 12 12 12"/>
+																		<Image Source="{Binding Image}" Grid.Column="0"  Margin="15 12 12 12" Stretch="Uniform"/>
+																		<Border Grid.Column="0" Margin="11 8 8 8" CornerRadius="10" BorderBrush="{DynamicResource TextBoxColor_Stroke}" BorderThickness="5"/>
+
+																		<!-- Headline and category -->
+																		<Grid Grid.Column="1" Grid.ColumnSpan="2">
+
+																			<Grid.RowDefinitions>
+																				<RowDefinition Height="12"/>
+																				<RowDefinition/>
+																				<RowDefinition/>
+																				<RowDefinition/>
+																				<RowDefinition Height="12"/>
+																			</Grid.RowDefinitions>
+
+																			<TextBlock Text="{Binding Headline}" Margin="0 5 8 0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="1" Grid.RowSpan="2" TextWrapping="Wrap" Foreground="White" FontSize="18"/>
+																			<TextBlock Text="{Binding Category}" Margin="0 0 0 5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Row="3" FontSize="15" Foreground="WhiteSmoke"/>
+
+
+																		</Grid>
+
+																		<!-- Button -->
+																		<Button x:Name="btn_ItemsControl_EditNews" Click="btn_ItemsControl_EditNews_Click"
+																				Foreground="{DynamicResource ButtonColorBrush_Text}"
+																				Grid.Column="4" Margin="5 0 0 0" Tag="{Binding News_ID}">
+
+																			<Button.Style>
+																				<Style TargetType="Button">
+																					<Setter Property="Background" Value="{DynamicResource ButtonColor1_Normal}"/>
+																					<Style.Triggers>
+																						<Trigger Property="IsMouseOver" Value="True">
+																							<Setter Property="Background" Value="{DynamicResource ButtonColor1_Hover}" />
+																						</Trigger>
+																					</Style.Triggers>
+																				</Style>
+																			</Button.Style>
+
+																			<Button.Template>
+																				<ControlTemplate TargetType="Button">
+																					<Border CornerRadius="0 20 20 0"
+																							Background="{TemplateBinding Background}"
+																							Margin="{TemplateBinding Margin}"
+																							Padding="{TemplateBinding Padding}">
+																						<ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+																					</Border>
+																				</ControlTemplate>
+																			</Button.Template>
+
+																			<TextBlock Foreground="White" FontSize="35" TextAlignment="Center">
+																				Edit <LineBreak/> News
+																			</TextBlock>
+
+																		</Button>
+
+																	</Grid>
+
+																</Grid>
+															</DataTemplate>
+														</ItemsControl.ItemTemplate>
+
+													</ItemsControl>
+
+												</ScrollViewer>
+
+
+											</Grid>
+
+										</TabItem>
+
+										<TabItem x:Name="tab_DeleteNews">
+
+											<Grid>
+												<Grid.RowDefinitions>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+												</Grid.RowDefinitions>
+
+												<TextBlock Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center"
+													       Margin="10 10 0 20"
+														   Text="Delete News" Style="{StaticResource FG_TextBlock}" FontSize="50"/>
+
+												<Grid x:Name="DeleteNews_NewsNotAvailable" Grid.Row="2" Grid.RowSpan="9" Visibility="Hidden">
+
+													<StackPanel Orientation="Horizontal"
+													HorizontalAlignment="Center" VerticalAlignment="Center"
+													Margin="80">
+
+														<Image Source="{DynamicResource icon_Sad}"
+															   HorizontalAlignment="Center"
+															   VerticalAlignment="Center"/>
+
+														<StackPanel Orientation="Vertical" VerticalAlignment="Center">
+
+															<TextBlock Text="No News" 
+																		VerticalAlignment="Top" HorizontalAlignment="Center"
+																		Margin="10"
+																		FontSize="55"
+																		Style="{StaticResource FG_TextBlock}"/>
+
+															<TextBlock Text="Found!" 
+																		VerticalAlignment="Top" HorizontalAlignment="Center"
+																		Margin="10"
+																		FontSize="55"
+																		Style="{StaticResource FG_TextBlock}"/>
+
+														</StackPanel>
+
+
+													</StackPanel>
+
+												</Grid>
+												
+												<ScrollViewer Grid.Row="2" Grid.RowSpan="8"  VerticalScrollBarVisibility="Hidden">
+
+													<ItemsControl x:Name="itemsControl_DeleteNews">
+
+														<ItemsControl.ItemTemplate>
+
+															<DataTemplate>
+																<Grid Height="100" Width="531"  Margin="0 0 0 10">
+
+																	<Border Background="{DynamicResource TextBoxColor_Stroke}" CornerRadius="18" />
+																	<Border BorderBrush="{DynamicResource ButtonColor1_Normal}" BorderThickness="5" CornerRadius="15" />
+
+																	<Grid>
+
+																		<Grid.ColumnDefinitions>
+																			<ColumnDefinition/>
+																			<ColumnDefinition/>
+																			<ColumnDefinition/>
+																			<ColumnDefinition/>
+																		</Grid.ColumnDefinitions>
+
+																		<!-- Image -->
+																		<Rectangle Grid.Column="0" Fill="{DynamicResource ButtonColor1_Hover}" Margin="15 12 12 12"/>
+																		<Image Source="{Binding Image}" Grid.Column="0"  Margin="15 12 12 12" Stretch="Uniform"/>
+																		<Border Grid.Column="0" Margin="11 8 8 8" CornerRadius="10" BorderBrush="{DynamicResource TextBoxColor_Stroke}" BorderThickness="5"/>
+
+																		<!-- Headline and category Text="{Binding Headline}"  -->
+																		<Grid Grid.Column="1" Grid.ColumnSpan="2">
+
+																			<Grid.RowDefinitions>
+																				<RowDefinition Height="12"/>
+																				<RowDefinition/>
+																				<RowDefinition/>
+																				<RowDefinition/>
+																				<RowDefinition Height="12"/>
+																			</Grid.RowDefinitions>
+
+																			<TextBlock Text="{Binding Headline}" Margin="0 5 8 0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="1" Grid.RowSpan="2" TextWrapping="Wrap" Foreground="White" FontSize="18"/>
+																			<TextBlock Text="{Binding Category}" Margin="0 0 0 5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Row="3" FontSize="15" Foreground="WhiteSmoke"/>
+
+
+																		</Grid>
+
+																		<!-- Button -->
+																		<Button x:Name="btn_ItemsControl_DeleteNews" Click="btn_ItemsControl_DeleteNews_Click"
+																				Foreground="{DynamicResource ButtonColorBrush_Text}"
+																				Grid.Column="4" Margin="5 0 0 0" Tag="{Binding News_ID}">
+
+																			<Button.Style>
+																				<Style TargetType="Button">
+																					<Setter Property="Background" Value="{DynamicResource ButtonColor1_Normal}"/>
+																					<Style.Triggers>
+																						<Trigger Property="IsMouseOver" Value="True">
+																							<Setter Property="Background" Value="{DynamicResource ButtonColor1_Hover}" />
+																						</Trigger>
+																					</Style.Triggers>
+																				</Style>
+																			</Button.Style>
+
+																			<Button.Template>
+																				<ControlTemplate TargetType="Button">
+																					<Border CornerRadius="0 20 20 0"
+																							Background="{TemplateBinding Background}"
+																							Margin="{TemplateBinding Margin}"
+																							Padding="{TemplateBinding Padding}">
+																						<ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+																					</Border>
+																				</ControlTemplate>
+																			</Button.Template>
+
+																			<TextBlock Foreground="White" FontSize="35" TextAlignment="Center">
+																				Delete <LineBreak/> News
+																			</TextBlock>
+
+																		</Button>
+
+																	</Grid>
+
+																</Grid>
+															</DataTemplate>
+
+														</ItemsControl.ItemTemplate>
+
+													</ItemsControl>
+
+												</ScrollViewer>
+
+											</Grid>
+
+										</TabItem>
+
+										<TabItem x:Name="tab_ViewAllNews">
+
+											<Grid>
+												<Grid.RowDefinitions>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+												</Grid.RowDefinitions>
+
+												<TextBlock Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center"
+													       Margin="10 10 0 20"
+														   Text="View All News" Style="{StaticResource FG_TextBlock}" FontSize="50"/>
+
+												<Grid x:Name="ViewAllNews_NewsNotAvailable" Grid.Row="2" Grid.RowSpan="9" Visibility="Hidden">
+
+													<StackPanel Orientation="Horizontal"
+													HorizontalAlignment="Center" VerticalAlignment="Center"
+													Margin="80">
+
+														<Image Source="{DynamicResource icon_Sad}"
+															   HorizontalAlignment="Center"
+															   VerticalAlignment="Center"/>
+
+														<StackPanel Orientation="Vertical" VerticalAlignment="Center">
+
+															<TextBlock Text="No News" 
+																		VerticalAlignment="Top" HorizontalAlignment="Center"
+																		Margin="10"
+																		FontSize="55"
+																		Style="{StaticResource FG_TextBlock}"/>
+
+															<TextBlock Text="Found!" 
+																		VerticalAlignment="Top" HorizontalAlignment="Center"
+																		Margin="10"
+																		FontSize="55"
+																		Style="{StaticResource FG_TextBlock}"/>
+
+														</StackPanel>
+
+
+													</StackPanel>
+
+												</Grid>
+												
+												<ScrollViewer Grid.Row="2" Grid.RowSpan="8"  VerticalScrollBarVisibility="Hidden">
+
+													<ItemsControl x:Name="itemsControl_ViewAllNews">
+
+														<ItemsControl.ItemTemplate>
+
+															<DataTemplate>
+																<Grid Height="100" Width="531" Margin="0 0 0 10">
+
+																	<Border Background="{DynamicResource TextBoxColor_Stroke}" CornerRadius="18" />
+																	<Border BorderBrush="{DynamicResource ButtonColor1_Normal}" BorderThickness="5" CornerRadius="15" />
+
+																	<Grid>
+
+																		<Grid.ColumnDefinitions>
+																			<ColumnDefinition/>
+																			<ColumnDefinition/>
+																			<ColumnDefinition/>
+																			<ColumnDefinition/>
+																		</Grid.ColumnDefinitions>
+
+																		<!-- Image -->
+																		<Rectangle Grid.Column="0" Fill="{DynamicResource ButtonColor1_Hover}" Margin="15 12 12 12"/>
+																		<Image Source="{Binding Image}" Grid.Column="0"  Margin="15 12 12 12" Stretch="Uniform"/>
+																		<Border Grid.Column="0" Margin="11 8 8 8" CornerRadius="10" BorderBrush="{DynamicResource TextBoxColor_Stroke}" BorderThickness="5"/>
+
+
+																		<!-- Headline and category -->
+																		<Grid Grid.Column="1" Grid.ColumnSpan="3">
+
+																			<Grid.RowDefinitions>
+																				<RowDefinition Height="12"/>
+																				<RowDefinition/>
+																				<RowDefinition/>
+																				<RowDefinition/>
+																				<RowDefinition Height="12"/>
+																			</Grid.RowDefinitions>
+
+																			<TextBlock Text="{Binding Headline}" Margin="0 5 8 0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="1" Grid.RowSpan="2" TextWrapping="Wrap" Foreground="White" FontSize="22"/>
+																			<TextBlock Text="{Binding Category}" Margin="0 0 0 5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Row="3" FontSize="15" Foreground="WhiteSmoke"/>
+
+																		</Grid>
+
+																	</Grid>
+
+																</Grid>
+															</DataTemplate>
+
+														</ItemsControl.ItemTemplate>
+
+													</ItemsControl>
+
+												</ScrollViewer>
+
+											</Grid>
+
+										</TabItem>
+
+										<TabItem x:Name="tab_DeleteUser">
+
+											<Grid>
+												<Grid.RowDefinitions>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+												</Grid.RowDefinitions>
+
+												<TextBlock Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center"
+													       Margin="10 10 0 20"
+														   Text="Delete User" Style="{StaticResource FG_TextBlock}" FontSize="50"/>
+
+												<ScrollViewer Grid.Row="2" Grid.RowSpan="8"  VerticalScrollBarVisibility="Hidden">
+
+													<ItemsControl x:Name="itemsControl_DeleteUser">
+
+														<ItemsControl.ItemsPanel>
+															<ItemsPanelTemplate>
+																<WrapPanel/>
+															</ItemsPanelTemplate>
+														</ItemsControl.ItemsPanel>
+
+														<ItemsControl.ItemTemplate>
+
+															<DataTemplate>
+
+																<Border Margin="0 0 10 10" Background="{DynamicResource TextBoxColor_Stroke}" CornerRadius="23">
+
+																	<Grid>
+
+																		<Border BorderBrush="{DynamicResource ButtonColor1_Normal}" BorderThickness="5" CornerRadius="20"/>
+
+																		<Grid>
+
+																			<Grid.ColumnDefinitions>
+																				<ColumnDefinition/>
+																				<ColumnDefinition/>
+																				<ColumnDefinition/>
+																				<ColumnDefinition/>
+																			</Grid.ColumnDefinitions>
+
+																			<StackPanel Orientation="Vertical" Grid.Column="0" Grid.ColumnSpan="3" Margin="15">
+																				<StackPanel Orientation="Horizontal">
+																					<TextBlock Text="Username" Foreground="WhiteSmoke" FontSize="20"/>
+																					<TextBlock Text="{Binding Username}" Foreground="WhiteSmoke" FontSize="20" Margin="20 0 0 0"/>
+																				</StackPanel>
+																				<StackPanel Orientation="Horizontal">
+																					<TextBlock Text="Email" Foreground="White" FontSize="20"/>
+																					<TextBlock Text="{Binding Email}" Foreground="WhiteSmoke" FontSize="20" Margin="48 0 0 0"/>
+																				</StackPanel>
+																				<StackPanel Orientation="Horizontal">
+																					<TextBlock Text="is admin" Foreground="White" FontSize="20"/>
+																					<TextBlock Text="{Binding isAdmin}" Foreground="WhiteSmoke" FontSize="20"  Margin="32 0 0 0"/>
+																				</StackPanel>
+																			</StackPanel>
+
+																			<!-- Button -->
+																			<Button x:Name="btn_ItemsControl_DeleteUser" Click="btn_ItemsControl_DeleteUser_Click"
+																		Grid.Column="3" Padding="10"
+																		Foreground="{DynamicResource ButtonColorBrush_Text}" HorizontalAlignment="Right"
+																		Tag="{Binding User_ID}">
+
+																				<Button.Style>
+																					<Style TargetType="Button">
+																						<Setter Property="Background" Value="{DynamicResource ButtonColor1_Normal}"/>
+																						<Style.Triggers>
+																							<Trigger Property="IsMouseOver" Value="True">
+																								<Setter Property="Background" Value="{DynamicResource ButtonColor1_Hover}" />
+																							</Trigger>
+																						</Style.Triggers>
+																					</Style>
+																				</Button.Style>
+
+																				<Button.Template>
+																					<ControlTemplate TargetType="Button">
+																						<Border CornerRadius="0 20 20 0"
+																					Background="{TemplateBinding Background}"
+																					Margin="{TemplateBinding Margin}"
+																					Padding="{TemplateBinding Padding}">
+																							<ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+																						</Border>
+																					</ControlTemplate>
+																				</Button.Template>
+
+																				<TextBlock Foreground="White" FontSize="20" TextAlignment="Center">
+																			Delete <LineBreak/> User
+																				</TextBlock>
+
+																			</Button>
+
+
+																		</Grid>
+																		
+																	</Grid>
+																</Border>
+
+															</DataTemplate>
+															
+														</ItemsControl.ItemTemplate>
+
+													</ItemsControl>
+
+												</ScrollViewer>
+
+											</Grid>
+
+										</TabItem>
+
+										<TabItem x:Name="tab_ViewAllUsers">
+
+											<Grid>
+												<Grid.RowDefinitions>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+												</Grid.RowDefinitions>
+
+												<TextBlock Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center"
+													       Margin="10 10 0 20"
+														   Text="View All Users" Style="{StaticResource FG_TextBlock}" FontSize="50"/>
+
+												
+
+												<ScrollViewer Grid.Row="2" Grid.RowSpan="8"  VerticalScrollBarVisibility="Hidden">
+
+													<ItemsControl x:Name="itemsControl_ViewAllUsers">
+
+														<ItemsControl.ItemsPanel>
+															<ItemsPanelTemplate>
+																<WrapPanel/>
+															</ItemsPanelTemplate>
+														</ItemsControl.ItemsPanel>
+														
+														<ItemsControl.ItemTemplate>
+
+															<DataTemplate>
+
+																<Border Margin="0 0 10 10" Background="{DynamicResource TextBoxColor_Stroke}" CornerRadius="23">
+
+																	<Grid>
+
+																		<Border BorderBrush="{DynamicResource ButtonColor1_Normal}" BorderThickness="5" CornerRadius="20"/>
+
+																		<StackPanel Orientation="Vertical" Grid.Column="0" Grid.ColumnSpan="3" Margin="15">
+																			<StackPanel Orientation="Horizontal">
+																				<TextBlock Text="Username" Foreground="WhiteSmoke" FontSize="20"/>
+																				<TextBlock Text="{Binding Username}" Foreground="WhiteSmoke" FontSize="20" Margin="20 0 0 0"/>
+																			</StackPanel>
+																			<StackPanel Orientation="Horizontal">
+																				<TextBlock Text="Email" Foreground="White" FontSize="20"/>
+																				<TextBlock Text="{Binding Email}" Foreground="WhiteSmoke" FontSize="20" Margin="48 0 0 0"/>
+																			</StackPanel>
+																			<StackPanel Orientation="Horizontal">
+																				<TextBlock Text="is admin" Foreground="White" FontSize="20"/>
+																				<TextBlock Text="{Binding isAdmin}" Foreground="WhiteSmoke" FontSize="20"  Margin="32 0 0 0"/>
+																			</StackPanel>
+																		</StackPanel>
+
+																	</Grid>
+																</Border>
+
+															</DataTemplate>
+
+														</ItemsControl.ItemTemplate>
+														
+													</ItemsControl>
+													
+												</ScrollViewer>
+
+											</Grid>
+
+										</TabItem>
+
+									</TabControl>
 
 								</Grid>
-								
+
 							</Grid>
+						</TabItem>
+
+						<!-- Bookmark Screen Body Tab -->
+						<TabItem x:Name="tab_BookmarkScreen">
+
+							<Grid>
+								<Grid.RowDefinitions>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+								</Grid.RowDefinitions>
+
+								<TextBlock Grid.Row="0" Grid.RowSpan="3" HorizontalAlignment="Center"
+													       Margin="0 30 0 15"
+														   Text="-------- My Bookmarks --------" Style="{StaticResource FG_TextBlock}" FontSize="50"/>
+
+								<Grid x:Name="Bookmark_NoBookmarksYet" Grid.Row="3" Grid.RowSpan="7">
+
+									<StackPanel Orientation="Horizontal"
+													HorizontalAlignment="Center" VerticalAlignment="Center"
+													Margin="40 30 40 50">
+
+										<Image Source="{DynamicResource icon_Sad}"
+											   HorizontalAlignment="Center"
+											   VerticalAlignment="Center"/>
+
+										<StackPanel Orientation="Vertical">
+
+											<TextBlock Text="You haven't" 
+													   VerticalAlignment="Top" HorizontalAlignment="Center"
+													   FontSize="60"
+													   Style="{StaticResource FG_TextBlock}"/>
+
+											<TextBlock Text="bookmarked" 
+													   VerticalAlignment="Top" HorizontalAlignment="Center"
+													   FontSize="60"
+													   Style="{StaticResource FG_TextBlock}"/>
+
+											<TextBlock Text="Anything Yet!" 
+													   VerticalAlignment="Top" HorizontalAlignment="Center"
+													   FontSize="60"
+													   Style="{StaticResource FG_TextBlock}"/>
+
+										</StackPanel>
+
+
+									</StackPanel>
+
+								</Grid>
+
+								<ScrollViewer x:Name="Bookmark_ViewBookmarks" Margin="0 10 0 0" Grid.Row="2" Grid.RowSpan="8"  VerticalScrollBarVisibility="Hidden">
+
+									<ItemsControl x:Name="itemsControl_Bookmarks">
+
+										<ItemsControl.ItemTemplate>
+
+											<DataTemplate>
+												<Grid Height="100" Width="800" Margin="10">
+
+													<Border Background="{DynamicResource TextBoxColor_Stroke}" CornerRadius="18" />
+													<Border BorderBrush="{DynamicResource ButtonColor1_Normal}" BorderThickness="5" CornerRadius="15" />
+
+													<Grid>
+
+														<Grid.ColumnDefinitions>
+															<ColumnDefinition/>
+															<ColumnDefinition/>
+															<ColumnDefinition/>
+															<ColumnDefinition/>
+															<ColumnDefinition/>
+															<ColumnDefinition/>
+														</Grid.ColumnDefinitions>
+
+
+														<!-- Image -->
+														<Rectangle Grid.Column="0" Fill="{DynamicResource ButtonColor1_Hover}" Margin="15 12 12 12"/>
+														<Image Source="{Binding Image}" Grid.Column="0"  Margin="15 12 12 12" Stretch="Uniform"/>
+														<Border Grid.Column="0" Margin="11 8 8 8" CornerRadius="10" BorderBrush="{DynamicResource TextBoxColor_Stroke}" BorderThickness="5"/>
+
+														<!-- Headline and category  -->
+														<Grid Grid.Column="1" Grid.ColumnSpan="5" Margin="0 0 115 0">
+
+															<Grid.RowDefinitions>
+																<RowDefinition Height="12"/>
+																<RowDefinition/>
+																<RowDefinition/>
+																<RowDefinition/>
+																<RowDefinition Height="12"/>
+															</Grid.RowDefinitions>
+
+															<TextBlock Text="{Binding Headline}" Margin="0 0 15 0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="1" Grid.RowSpan="2" TextWrapping="Wrap" Foreground="White" FontSize="25"/>
+															<TextBlock Text="{Binding Category}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Row="3" FontSize="20" Foreground="WhiteSmoke"/>
+
+														</Grid>
+
+
+														<!-- Button -->
+														<Button x:Name="btn_ItemsControl_RemoveBookmark" Click="btn_ItemsControl_RemoveBookmark_Click"
+																 Foreground="{DynamicResource ButtonColorBrush_Text}"
+																Grid.Column="5" Margin="5 0 0 0" Tag="{Binding News_ID}">
+
+															<Button.Style>
+																<Style TargetType="Button">
+																	<Setter Property="Background" Value="{DynamicResource ButtonColor1_Normal}"/>
+																	<Style.Triggers>
+																		<Trigger Property="IsMouseOver" Value="True">
+																			<Setter Property="Background" Value="{DynamicResource ButtonColor1_Hover}" />
+																		</Trigger>
+																	</Style.Triggers>
+																</Style>
+															</Button.Style>
+
+															<Button.Template>
+																<ControlTemplate TargetType="Button">
+																	<Border CornerRadius="0 20 20 0"
+																			Background="{TemplateBinding Background}"
+																			Margin="{TemplateBinding Margin}"
+																			Padding="{TemplateBinding Padding}">
+																		<ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+																	</Border>
+																</ControlTemplate>
+															</Button.Template>
+
+															<TextBlock Foreground="White" FontSize="25" TextAlignment="Center">
+																				Delete <LineBreak/> Bookmark
+															</TextBlock>
+
+														</Button>
+
+													</Grid>
+
+												</Grid>
+											</DataTemplate>
+
+										</ItemsControl.ItemTemplate>
+
+									</ItemsControl>
+
+								</ScrollViewer>
+
+							</Grid>
+
+						</TabItem>
+
+						<!-- Read History Screen Body Tab -->
+						<TabItem x:Name="tab_ReadHistoryScreen">
+
+							<Grid>
+								<Grid.RowDefinitions>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+									<RowDefinition/>
+								</Grid.RowDefinitions>
+
+								<TextBlock Grid.Row="0" Grid.RowSpan="3" HorizontalAlignment="Center"
+													       Margin="0 30 0 15"
+														   Text="-------- My Read History --------" Style="{StaticResource FG_TextBlock}" FontSize="50"/>
+
+								<Grid x:Name="MarkeAsRead_NoMarkedAsReadYet" Grid.Row="3" Grid.RowSpan="7">
+
+									<StackPanel Orientation="Horizontal"
+													HorizontalAlignment="Center" VerticalAlignment="Center"
+													Margin="40 30 40 50">
+
+										<Image Source="{DynamicResource icon_Sad}"
+											   HorizontalAlignment="Center"
+											   VerticalAlignment="Center"/>
+
+										<StackPanel Orientation="Vertical" Margin="10 0 0 0">
+
+											<TextBlock Text="You haven't" 
+													   VerticalAlignment="Top" HorizontalAlignment="Center"
+													   FontSize="60"
+													   Style="{StaticResource FG_TextBlock}"/>
+
+											<TextBlock Text="Marked As Read" 
+													   VerticalAlignment="Top" HorizontalAlignment="Center"
+													   FontSize="60"
+													   Style="{StaticResource FG_TextBlock}"/>
+
+											<TextBlock Text="Anything Yet!" 
+													   VerticalAlignment="Top" HorizontalAlignment="Center"
+													   FontSize="60"
+													   Style="{StaticResource FG_TextBlock}"/>
+
+										</StackPanel>
+
+
+									</StackPanel>
+
+								</Grid>
+
+
+								<ScrollViewer x:Name="MarkeAsRead_ViewMarkedAsRead" Margin="0 10 0 0" Grid.Row="2" Grid.RowSpan="8"  VerticalScrollBarVisibility="Hidden">
+
+									<ItemsControl x:Name="itemsControl_ReadHistory">
+
+										<ItemsControl.ItemTemplate>
+
+											<DataTemplate>
+												<Grid Height="100" Width="800" Margin="10">
+
+													<Border Background="{DynamicResource TextBoxColor_Stroke}" CornerRadius="18" />
+													<Border BorderBrush="{DynamicResource ButtonColor1_Normal}" BorderThickness="5" CornerRadius="15" />
+
+													<Grid>
+
+														<Grid.ColumnDefinitions>
+															<ColumnDefinition/>
+															<ColumnDefinition/>
+															<ColumnDefinition/>
+															<ColumnDefinition/>
+															<ColumnDefinition/>
+															<ColumnDefinition/>
+														</Grid.ColumnDefinitions>
+
+														<!-- Image -->
+														<Rectangle Grid.Column="0" Fill="{DynamicResource ButtonColor1_Hover}" Margin="15 12 12 12"/>
+														<Image Source="{Binding Image}" Grid.Column="0"  Margin="15 12 12 12" Stretch="Uniform"/>
+														<Border Grid.Column="0" Margin="11 8 8 8" CornerRadius="10" BorderBrush="{DynamicResource TextBoxColor_Stroke}" BorderThickness="5"/>
+
+														<!-- Headline and category -->
+														<Grid Grid.Column="1" Grid.ColumnSpan="5" Margin="0 0 115 0">
+
+															<Grid.RowDefinitions>
+																<RowDefinition Height="12"/>
+																<RowDefinition/>
+																<RowDefinition/>
+																<RowDefinition/>
+																<RowDefinition Height="12"/>
+															</Grid.RowDefinitions>
+
+															<TextBlock Text="{Binding Headline}" Margin="0 0 15 0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="1" Grid.RowSpan="2" TextWrapping="Wrap" Foreground="White" FontSize="25"/>
+															<TextBlock Text="{Binding Category}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Row="3" FontSize="20" Foreground="WhiteSmoke"/>
+
+														</Grid>
+
+
+														<!-- Button -->
+														<Button x:Name="btn_ItemsControl_RemoveMarkAsRead" Click="btn_ItemsControl_RemoveMarkAsRead_Click"
+																 Foreground="{DynamicResource ButtonColorBrush_Text}"
+																Grid.Column="5" Margin="5 0 0 0" Tag="{Binding News_ID}">
+
+															<Button.Style>
+																<Style TargetType="Button">
+																	<Setter Property="Background" Value="{DynamicResource ButtonColor1_Normal}"/>
+																	<Style.Triggers>
+																		<Trigger Property="IsMouseOver" Value="True">
+																			<Setter Property="Background" Value="{DynamicResource ButtonColor1_Hover}" />
+																		</Trigger>
+																	</Style.Triggers>
+																</Style>
+															</Button.Style>
+
+															<Button.Template>
+																<ControlTemplate TargetType="Button">
+																	<Border CornerRadius="0 20 20 0"
+																			Background="{TemplateBinding Background}"
+																			Margin="{TemplateBinding Margin}"
+																			Padding="{TemplateBinding Padding}">
+																		<ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+																	</Border>
+																</ControlTemplate>
+															</Button.Template>
+
+															<TextBlock Foreground="White" FontSize="25" TextAlignment="Center">
+																				Mark as <LineBreak/> Unread
+															</TextBlock>
+
+														</Button>
+
+													</Grid>
+
+												</Grid>
+											</DataTemplate>
+										</ItemsControl.ItemTemplate>
+
+									</ItemsControl>
+
+								</ScrollViewer>
+
+							</Grid>
+
 						</TabItem>
 
 					</TabControl>

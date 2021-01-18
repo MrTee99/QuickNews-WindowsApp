@@ -7,12 +7,21 @@
 
 	<Color x:Key="TextColor">#f7f7f7</Color>
 	<Color x:Key="HeadlineTextColor">#E94560</Color>
+	<Color x:Key="CategoryTextColor">#E6E3E3</Color>
 
 	<Color x:Key="ButtonColor_Normal">#E94560</Color>
 	<Color x:Key="ButtonColor_Hover">#cd1836</Color>
 
+	<SolidColorBrush x:Key="ComboBoxItemColor_Hover">#cd1836</SolidColorBrush>
+
 	<Color x:Key="ButtonColor_Text">#f7f7f7</Color>
 	<SolidColorBrush x:Key="ButtonColorBrush_Text">#f7f7f7</SolidColorBrush>
+
+	<SolidColorBrush x:Key="ButtonColor0_Normal">#E94560</SolidColorBrush>
+	<SolidColorBrush x:Key="ButtonColor0_Hover">#cd1836</SolidColorBrush>
+
+	<SolidColorBrush x:Key="ButtonColor1_Normal">#a0132a</SolidColorBrush>
+	<SolidColorBrush x:Key="ButtonColor1_Hover">#891024</SolidColorBrush>
 
 	<SolidColorBrush x:Key="ButtonColor2_Normal">#e73250</SolidColorBrush>
 	<SolidColorBrush x:Key="ButtonColor2_Hover">#e41b3c</SolidColorBrush>
@@ -27,8 +36,12 @@
 	<Color x:Key="TextBoxColor_Hint">#b3b3b3</Color>
 	<Color x:Key="TextBoxColor_Foreground">#595959</Color>
 
+	<SolidColorBrush x:Key="TextBoxColor_Stroke">#E94560</SolidColorBrush>
+	<SolidColorBrush x:Key="TextBoxColor_Text">#595959</SolidColorBrush>
+	<SolidColorBrush x:Key="TextBoxColor_Placeholder">#b3b3b3</SolidColorBrush>
+
 	<Color x:Key="AdminPanelMenu_Color">#E94560</Color>
-	<Color x:Key="AdminPanelMenu_AlternateColor">#313131</Color>
+	<SolidColorBrush x:Key="AdminPanelMenu_AlternateColor">#313131</SolidColorBrush>
 
 	<BitmapImage x:Key="MainBackgorundImage" UriSource="..\Icons\darkBG.jpg"></BitmapImage>
 	
@@ -53,6 +66,10 @@
 
 	<BitmapImage x:Key="icon_Unread" UriSource="..\Icons\Icon_Unread.png"></BitmapImage>
 	<BitmapImage x:Key="icon_Read" UriSource="..\Icons\Icon_Read.png"></BitmapImage>
+
+	<BitmapImage x:Key="icon_Sad" UriSource="..\Icons\pink_icon_sad.png"></BitmapImage>
+	
+	
 
 	<!-- 
 	Darkest = #222831

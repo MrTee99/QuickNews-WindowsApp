@@ -17,10 +17,9 @@ namespace Quick_News_App
 	
 	public partial class LoginWindow : Window
 	{
-		private string adminUsername = "ADMIN";
-		private string adminPassword = "123";
+		private QuickNewsDatabaseDataContext _db;
 
-		public delegate void EventDelegate_OnLoginPressed_GetLoginInfo(bool isLoggedIn, bool isAdminLoggedIn, string LoggedInUsername);
+		public delegate void EventDelegate_OnLoginPressed_GetLoginInfo(bool isLoggedIn, bool isAdminLoggedIn, string LoggedInUsername, int LoggedInUserID);
 		public delegate void EventDelegate_OnLoginWindowClosed_RemoveBlur();
 
 		public event EventDelegate_OnLoginPressed_GetLoginInfo OnLoginPressed;
@@ -46,6 +45,7 @@ namespace Quick_News_App
 		public LoginWindow()
 		{
 			InitializeComponent();
+			_db = new QuickNewsDatabaseDataContext();
 		}
 
 		private void btn_Exit_Click(object sender, RoutedEventArgs e) => CloseLoginScreen();
@@ -58,21 +58,19 @@ namespace Quick_News_App
 			bool isAdminLoggedIn = false;
 			string LoggedInUsername = "";
 
-			var username = input_LoginUsername.Text;
-			var password = input_LoginPassword.PasswordInput.Password;
+			var username = input_LoginUsername.Text.Trim();
+			var password = input_LoginPassword.Password;
 
-			if (username == adminUsername && password == adminPassword)
+			var doesUserExists = _db.UserTables.FirstOrDefault(q => q.Username == username && q.Password == password);
+
+			if (doesUserExists != null)
 			{
 				isLoggedIn = true;
-				isAdminLoggedIn = true;
+				isAdminLoggedIn = doesUserExists.isAdmin;
 				LoggedInUsername = username;
 
-				OnLoginPressed?.Invoke(isLoggedIn, isAdminLoggedIn, LoggedInUsername);
+				OnLoginPressed?.Invoke(isLoggedIn, isAdminLoggedIn, LoggedInUsername, doesUserExists.User_ID);
 				CloseLoginScreen();
-			}
-			else if (isLoggedIn)
-			{ 
-				// user login check here 
 			}
 			else
 			{
@@ -87,9 +85,19 @@ namespace Quick_News_App
 			Hide();
 			OnLoginWindowClosed?.Invoke();
 			input_LoginUsername.Text = "";
-			input_LoginPassword.PasswordInput.Password = "";
+			input_LoginPassword.Password = "";
 		}
 
 		#endregion
+
+		private void input_LoginPassword_PasswordChanged(object sender, RoutedEventArgs e)
+		{
+			if(input_LoginPassword.Password.Length == 0)
+				txt_passPlaceholder.Visibility = Visibility.Visible;
+			else
+				txt_passPlaceholder.Visibility = Visibility.Hidden;
+		}
+
+
 	}
 }

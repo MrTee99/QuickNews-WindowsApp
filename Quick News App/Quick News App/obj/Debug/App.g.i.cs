@@ -58,7 +58,7 @@ namespace Quick_News_App {
             
             #line default
             #line hidden
-            System.Uri resourceLocater = new System.Uri("/Quick News App;component/app.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Quick News;component/app.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\App.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

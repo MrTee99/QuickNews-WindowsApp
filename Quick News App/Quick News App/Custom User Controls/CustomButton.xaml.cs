@@ -75,8 +75,8 @@ namespace Quick_News_App.Custom_User_Controls
 
 		public event RoutedEventHandler Click
 		{
-			add { cusBtn.Click += value; }
-			remove { cusBtn.Click -= value; }
+			add { cusBtn.Click += value;  }
+			remove { cusBtn.Click -= value;  }
 		}
 	}
 }

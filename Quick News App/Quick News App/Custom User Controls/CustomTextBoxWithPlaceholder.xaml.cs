@@ -26,12 +26,16 @@ namespace Quick_News_App.Custom_User_Controls
 			get { return (CornerRadius)GetValue(CornerRadiusProperty); }
 			set { SetValue(CornerRadiusProperty, value); }
 		}
-		public Thickness CusTextBox_Padding
+		public Thickness CusTextBox_PaddingInsideOfTextBox
 		{
-			get { return (Thickness)GetValue(CusTextBox_PaddingProperty); }
-			set { SetValue(CusTextBox_PaddingProperty, value); }
+			get { return (Thickness)GetValue(CusTextBox_PaddingInsideOfTextBoxProperty); }
+			set { SetValue(CusTextBox_PaddingInsideOfTextBoxProperty, value); }
 		}
-
+		public Thickness cusTextBox_PaddingOfContainer
+		{
+			get { return (Thickness)GetValue(cusTextBox_PaddingOfContainerProperty); }
+			set { SetValue(cusTextBox_PaddingOfContainerProperty, value); }
+		}
 
 		public Brush PlaceholderColor
 		{
@@ -78,8 +82,34 @@ namespace Quick_News_App.Custom_User_Controls
 		}
 
 
+
+		public TextWrapping cusTextBox_TextWrap
+		{
+			get { return (TextWrapping)GetValue(cusTextBox_TextWrapProperty); }
+			set { SetValue(cusTextBox_TextWrapProperty, value); }
+		}
+		public bool cusTextBox_AcceptsReturn
+		{
+			get { return (bool)GetValue(cusTextBox_AcceptsReturnProperty); }
+			set { SetValue(cusTextBox_AcceptsReturnProperty, value); }
+		}
+		public int cusTextBox_MaxLength
+		{
+			get { return (int)GetValue(cusTextBox_MaxLengthProperty); }
+			set { SetValue(cusTextBox_MaxLengthProperty, value); }
+		}
+
+
+
+
+		public static readonly DependencyProperty cusTextBox_MaxLengthProperty = DependencyProperty.Register("cusTextBox_MaxLength", typeof(int), typeof(CustomTextBoxWithPlaceholder));
+		public static readonly DependencyProperty cusTextBox_AcceptsReturnProperty = DependencyProperty.Register("cusTextBox_AcceptsReturn", typeof(bool), typeof(CustomTextBoxWithPlaceholder), new PropertyMetadata(false));
+		public static readonly DependencyProperty cusTextBox_TextWrapProperty = DependencyProperty.Register("cusTextBox_TextWrap", typeof(TextWrapping), typeof(CustomTextBoxWithPlaceholder), new PropertyMetadata(TextWrapping.NoWrap));
+
 		public static readonly DependencyProperty CornerRadiusProperty = DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(CustomTextBoxWithPlaceholder), new PropertyMetadata(new CornerRadius(0.0, 0.0, 0.0, 0.0)));
-		public static readonly DependencyProperty CusTextBox_PaddingProperty = DependencyProperty.Register("CusTextBox_Padding", typeof(Thickness), typeof(CustomTextBoxWithPlaceholder), new PropertyMetadata(new Thickness(0, 0, 0, 0)));
+		public static readonly DependencyProperty CusTextBox_PaddingInsideOfTextBoxProperty = DependencyProperty.Register("CusTextBox_PaddingInsideOfTextBox", typeof(Thickness), typeof(CustomTextBoxWithPlaceholder), new PropertyMetadata(new Thickness(0, 0, 0, 0)));
+		public static readonly DependencyProperty cusTextBox_PaddingOfContainerProperty = DependencyProperty.Register("cusTextBox_PaddingOfContainer", typeof(Thickness), typeof(CustomTextBoxWithPlaceholder), new PropertyMetadata(new Thickness(0, 0, 0, 0)));
+
 
 		public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text", typeof(string), typeof(CustomTextBoxWithPlaceholder));
 		public static readonly DependencyProperty PlaceholderProperty = DependencyProperty.Register("Placeholder", typeof(string), typeof(CustomTextBoxWithPlaceholder), new PropertyMetadata("Placeholder"));

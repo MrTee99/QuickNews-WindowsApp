@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="QuickNewsDatabase">
+  <DataContextMoniker Name="/QuickNewsDatabaseDataContext" />
+  <nestedChildShapes>
+    <classShape Id="079eaf32-07b8-4da7-900c-05348869ff9b" absoluteBounds="4.5, 3.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/QuickNewsDatabaseDataContext/UserTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8ca4b6b7-d94e-4fdc-915f-183c59b50b04" absoluteBounds="4.515, 3.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5570bf66-953d-4d1d-a50e-00dd49b7caa6" absoluteBounds="4.5, 1.125, 2, 1.9631982421875">
+      <DataClassMoniker Name="/QuickNewsDatabaseDataContext/NewsTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="adf6ce61-b697-4a8e-9495-9ea58b414c16" absoluteBounds="4.515, 1.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a6b7b7c9-43db-465b-a8fb-d60ad62d1667" absoluteBounds="1.5, 1.5, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/QuickNewsDatabaseDataContext/CategoryTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="45c45d64-ee72-49df-9cbe-d6d16f9c3464" absoluteBounds="1.5150000000000001, 1.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.5 : 2.09699625651042); (4.5 : 2.09699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/QuickNewsDatabaseDataContext/CategoryTable/CategoryTable_NewsTable" />
+      <nodes>
+        <classShapeMoniker Id="a6b7b7c9-43db-465b-a8fb-d60ad62d1667" />
+        <classShapeMoniker Id="5570bf66-953d-4d1d-a50e-00dd49b7caa6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="570aef28-b580-49fb-8deb-849d1647dc87" absoluteBounds="7.5, 2.125, 2, 1.3862939453125">
+      <DataClassMoniker Name="/QuickNewsDatabaseDataContext/MarkedAsReadInfoTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="31796db2-76ee-40e6-b385-0ea9ac05ac57" absoluteBounds="7.515, 2.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.5 : 2.60659912109375); (7.5 : 2.60659912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/QuickNewsDatabaseDataContext/NewsTable/NewsTable_MarkedAsReadInfoTable" />
+      <nodes>
+        <classShapeMoniker Id="5570bf66-953d-4d1d-a50e-00dd49b7caa6" />
+        <classShapeMoniker Id="570aef28-b580-49fb-8deb-849d1647dc87" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.5 : 4.39109587760417); (8.5 : 4.39109587760417); (8.5 : 3.5112939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/QuickNewsDatabaseDataContext/UserTable/UserTable_MarkedAsReadInfoTable" />
+      <nodes>
+        <classShapeMoniker Id="079eaf32-07b8-4da7-900c-05348869ff9b" />
+        <classShapeMoniker Id="570aef28-b580-49fb-8deb-849d1647dc87" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="9de1f211-ab1a-4ea0-a39d-294c40ab8e97" absoluteBounds="1.5, 3.625, 2, 1.3862939453125">
+      <DataClassMoniker Name="/QuickNewsDatabaseDataContext/BookmarkInfoTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5a09713a-38d4-4042-8607-fc38f3871ae1" absoluteBounds="1.5150000000000001, 4.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.5 : 3.0881982421875); (3.5 : 3.0881982421875); (3.5 : 3.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/QuickNewsDatabaseDataContext/NewsTable/NewsTable_BookmarkInfoTable" />
+      <nodes>
+        <classShapeMoniker Id="5570bf66-953d-4d1d-a50e-00dd49b7caa6" />
+        <classShapeMoniker Id="9de1f211-ab1a-4ea0-a39d-294c40ab8e97" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 4.34939947265625); (3.5 : 4.34939947265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/QuickNewsDatabaseDataContext/UserTable/UserTable_BookmarkInfoTable" />
+      <nodes>
+        <classShapeMoniker Id="079eaf32-07b8-4da7-900c-05348869ff9b" />
+        <classShapeMoniker Id="9de1f211-ab1a-4ea0-a39d-294c40ab8e97" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -16,8 +16,8 @@
                 <Setter Property="Foreground" Value="{Binding CusBtn_Foreground, ElementName=customButton}" />
                 <Setter Property="Margin" Value="{Binding CusBtn_Margin, ElementName=customButton}" />
                 <Setter Property="Padding" Value="{Binding CusBtn_Padding, ElementName=customButton}" />
-                <Setter Property="Content" Value="{Binding CusBtn_Content, ElementName=customButton}" />
-                <Style.Triggers>
+				<Setter Property="Content" Value="{Binding CusBtn_Content, ElementName=customButton}" />
+				<Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
                         <Setter Property="Background" Value="{Binding CusBtn_Hover, ElementName=customButton}" />
                     </Trigger>
