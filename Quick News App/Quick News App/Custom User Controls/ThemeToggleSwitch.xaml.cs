@@ -30,9 +30,9 @@ namespace Quick_News_App.Custom_User_Controls
 			InitializeComponent();
         }
 
-        public void InitializeToggleSwitch(bool isToggled)
+        public void InitializeToggleSwitch(Themes theme)
         {
-            this.isToggled = isToggled;
+            this.isToggled = (theme == Themes.LIGHT_THEME) ? true : false;
             ToggleSwitch();
         }
 

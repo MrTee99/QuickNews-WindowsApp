@@ -1,21 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Microsoft.Win32;
 using Quick_News_App.Custom_User_Controls;
 using Quick_News_App.Modules;
@@ -44,7 +35,7 @@ namespace Quick_News_App
 		{
 			InitializeComponent();
 			SubscribingEvents();
-			btn_ThemeSwitcher.InitializeToggleSwitch(false);
+			btn_ThemeSwitcher.InitializeToggleSwitch(Themes.DARK_THEME);
 			UpdateLoginLogoutAndSignupAdminPanelButtonsUI();
 
 			LoadCategoryDataInComboBox(combobox_AddAndUpdateNews_Category);
@@ -118,6 +109,7 @@ namespace Quick_News_App
 		private void btn_Search_Click(object sender, RoutedEventArgs e) 
 		{
 			UpdateNewsListDataWithThisListAndOpenNewsFeedUI(GetAllNewsWhereThisSearchMatchesInHeadline(input_SearchNews.Text.Trim()));
+			input_SearchNews.Text = "";
 		}
 
 		private void btn_ReadHistory_Click(object sender, RoutedEventArgs e)
@@ -572,7 +564,7 @@ namespace Quick_News_App
 			RefreshDataIn_NewsModelForItemsControlsList();
 
 			itemsControl_DeleteUser.ItemsSource = null;
-			itemsControl_DeleteUser.ItemsSource = list_newsModelForItemsControls;
+			itemsControl_DeleteUser.ItemsSource = _db.UserTables.ToList();
 
 			MessageBox.Show("Success: User is Deleted successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 		}
@@ -788,6 +780,7 @@ namespace Quick_News_App
 					TabControl_MainWindow.SelectedItem = tab_MainScreen;
 					TabControl_MainWindow_UpperPart.SelectedItem = tab_MainScreen_UpperPart;
 					windowTitle.Text = "Quick News";
+					input_SearchNews.Text = "";
 					UpdateLoginLogoutAndSignupAdminPanelButtonsUI();
 					break;
 				case Screens.NEWS_FEED:
