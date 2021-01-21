@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Quick_News_App.Custom_User_Controls.ThemeToggleSwitch"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:local="clr-namespace:Quick_News_App.Custom_User_Controls"
+			 mc:Ignorable="d" Height="60" Width="130">
+
+	<Viewbox Margin="0,2,2,1" HorizontalAlignment="Right" VerticalAlignment="Center">
+		<Grid x:Name="Switch" HorizontalAlignment="Center" Height="60" Margin="0" VerticalAlignment="Center" Width="130" MouseLeftButtonDown="Switch_MouseLeftButtonDown">
+			<Rectangle x:Name="Back" Fill="#FFA0A0A0" HorizontalAlignment="Left" Width="130" RadiusY="19" RadiusX="19"/>
+			<Rectangle x:Name="Dot" Fill="White" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="47" RadiusY="16" RadiusX="16"/>
+
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+
+				<StackPanel x:Name="txt_DarkMode" Visibility="Hidden" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="3 0 0 0">
+					<TextBlock Text="Dark" FontSize="17" FontWeight="Black" Foreground="white" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					<TextBlock Text="Mode" FontSize="17" FontWeight="Black" Foreground="white" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+				</StackPanel>
+
+				<StackPanel x:Name="txt_LightMode" Visibility="Hidden" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 3 0">
+					<TextBlock Text="Light" FontSize="17" FontWeight="Black" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					<TextBlock Text="Mode" FontSize="17" FontWeight="Black" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+				</StackPanel>
+
+			</Grid>
+		</Grid>
+	</Viewbox>
+	
+</UserControl>

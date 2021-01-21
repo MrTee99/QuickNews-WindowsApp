@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="Quick_News_App.Custom_User_Controls.CustomButtonWithImage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Quick_News_App.Custom_User_Controls"
+             mc:Ignorable="d" 
+			 x:Name="_this"
+             d:DesignHeight="100" d:DesignWidth="300">
+
+	<UserControl.Resources>
+
+		<Style TargetType="Rectangle" x:Key="hoverDetectorRectangleStyle">
+			<Setter Property="Fill" Value="Transparent"/>
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="true">
+					<Setter Property="Opacity" Value="0"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+
+		<Style TargetType="Rectangle" x:Key="rectangleStyle">
+			<Setter Property="Fill" Value="{Binding BackgroundColor, ElementName=_this, FallbackValue=Red}"/>
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding Opacity, ElementName=usedForHoverTrigger}" Value="0">
+					<Setter Property="Fill" Value="{Binding HoverColor, ElementName=_this, FallbackValue=Blue}"/>
+				</DataTrigger>
+				<Trigger Property="IsMouseOver" Value="true">
+					<Setter Property="Fill" Value="{Binding HoverColor, ElementName=_this, FallbackValue=Blue}"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+	</UserControl.Resources>
+	
+	<Grid>
+		<Rectangle Style="{StaticResource rectangleStyle}" RadiusX="{Binding CornerRadius, ElementName=_this}" RadiusY="{Binding CornerRadius, ElementName=_this}"/>
+		<Image x:Name="img" Stretch="fill" Source="{Binding ImageSource, ElementName=_this}" Margin="{Binding ButtonPadding, ElementName=_this, FallbackValue=10}"/>
+		<Rectangle x:Name="usedForHoverTrigger" Style="{StaticResource hoverDetectorRectangleStyle}" RadiusX="{Binding CornerRadius, ElementName=_this}"  RadiusY="{Binding CornerRadius, ElementName=_this}"/>
+	</Grid>
+</UserControl>

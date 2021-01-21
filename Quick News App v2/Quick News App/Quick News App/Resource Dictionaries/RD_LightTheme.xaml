@@ -1,0 +1,83 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Quick_News_App.Resource_Dictionaries">
+
+	<Color x:Key="Form_BackgroundColor">#f7f7f7</Color>
+	<Color x:Key="Form_BorderColor">#000000</Color>
+
+	<Color x:Key="TextColor">#595959</Color>
+	<Color x:Key="HeadlineTextColor">#115EBA</Color>
+	<Color x:Key="CategoryTextColor">#313131</Color>
+
+	<Color x:Key="ButtonColor_Normal">#115EBA</Color>
+	<Color x:Key="ButtonColor_Hover">#0b3a75</Color>
+	
+	<SolidColorBrush x:Key="ComboBoxItemColor_Hover">#0b3a75</SolidColorBrush>
+
+	<Color x:Key="ButtonColor_Text">#f7f7f7</Color>
+	<SolidColorBrush x:Key="ButtonColorBrush_Text">#f7f7f7</SolidColorBrush>
+
+	<SolidColorBrush x:Key="ButtonColor0_Normal">#115EBA</SolidColorBrush>
+	<SolidColorBrush x:Key="ButtonColor0_Hover">#0b3a75</SolidColorBrush>
+
+	<SolidColorBrush x:Key="ButtonColor1_Normal">#0b3a75</SolidColorBrush>
+	<SolidColorBrush x:Key="ButtonColor1_Hover">#092f5d</SolidColorBrush>
+	
+	<SolidColorBrush x:Key="ButtonColor2_Normal">#346cb2</SolidColorBrush>
+	<SolidColorBrush x:Key="ButtonColor2_Hover">#2e609e</SolidColorBrush>
+
+	<SolidColorBrush x:Key="ButtonColor3_Normal">#2d83eb</SolidColorBrush>
+	<SolidColorBrush x:Key="ButtonColor3_Hover">#1675e9</SolidColorBrush>
+
+	<SolidColorBrush x:Key="ButtonColor4_Normal">#4491ee</SolidColorBrush>
+	<SolidColorBrush x:Key="ButtonColor4_Hover">#1469d2</SolidColorBrush>
+
+	<Color x:Key="TextBoxColor_Outline">#115EBA</Color>
+	<Color x:Key="TextBoxColor_Hint">#b3b3b3</Color>
+	<Color x:Key="TextBoxColor_Foreground">#595959</Color>
+
+	<SolidColorBrush x:Key="TextBoxColor_Stroke">#115EBA</SolidColorBrush>
+	<SolidColorBrush x:Key="TextBoxColor_Text">#595959</SolidColorBrush>
+	<SolidColorBrush x:Key="TextBoxColor_Placeholder">#b3b3b3</SolidColorBrush>
+
+	<Color x:Key="AdminPanelMenu_Color">#115EBA</Color>
+	<SolidColorBrush x:Key="AdminPanelMenu_AlternateColor">#dcd5d5</SolidColorBrush>
+
+	<BitmapImage x:Key="MainBackgorundImage" UriSource="..\Icons\lightBG.jpg"></BitmapImage>
+	
+	<BitmapImage x:Key="LogoSource" UriSource="..\Icons\LogoLightMode.png"></BitmapImage>
+
+	<BitmapImage x:Key="icon_Politics" UriSource="..\Icons\Icon_Politics.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Sports" UriSource="..\Icons\Icon_Sports.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Business" UriSource="..\Icons\Icon_Business.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Science" UriSource="..\Icons\Icon_Science.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Automobile" UriSource="..\Icons\Icon_Automobile.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Fashion" UriSource="..\Icons\Icon_Fashion.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Health" UriSource="..\Icons\Icon_Health.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Education" UriSource="..\Icons\Icon_Education.png"></BitmapImage>
+
+	<BitmapImage x:Key="icon_GoBack" UriSource="..\Icons\Icon_GoBack.png"></BitmapImage>
+
+	<BitmapImage x:Key="icon_NoItemsLeft" UriSource="..\Icons\Icon_NoItemsLeft.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Next" UriSource="..\Icons\Icon_Next.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Previous" UriSource="..\Icons\Icon_Previous.png"></BitmapImage>
+
+	<BitmapImage x:Key="icon_Bookmarked" UriSource="..\Icons\Icon_Bookmarked.png"></BitmapImage>
+	<BitmapImage x:Key="icon_NotBookmarked" UriSource="..\Icons\Icon_NotBookmarked.png"></BitmapImage>
+
+	<BitmapImage x:Key="icon_Unread" UriSource="..\Icons\Icon_Unread.png"></BitmapImage>
+	<BitmapImage x:Key="icon_Read" UriSource="..\Icons\Icon_Read.png"></BitmapImage>
+
+	<BitmapImage x:Key="icon_Sad" UriSource="..\Icons\blue_icon_sad.png"></BitmapImage>
+
+	<!-- 
+	Lightest = #f7f7f7
+	Light Second = #F0EDED
+	Light Third = #E6E3E3
+	Blue = #115EBA
+	Pink = #E94560
+	
+	Black For Text = #222831
+	-->
+	
+</ResourceDictionary>

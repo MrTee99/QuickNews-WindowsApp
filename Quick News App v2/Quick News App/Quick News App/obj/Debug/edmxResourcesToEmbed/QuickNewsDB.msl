@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QuickNewsModelStoreContainer" CdmEntityContainer="QuickNewsEntities">
+    <EntitySetMapping Name="BookmarkInfoTables">
+      <EntityTypeMapping TypeName="QuickNewsModel.BookmarkInfoTable">
+        <MappingFragment StoreEntitySet="BookmarkInfoTable">
+          <ScalarProperty Name="Bookmark_ID" ColumnName="Bookmark_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="News_ID" ColumnName="News_ID" />
+          <ScalarProperty Name="isBookmarked" ColumnName="isBookmarked" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryTables">
+      <EntityTypeMapping TypeName="QuickNewsModel.CategoryTable">
+        <MappingFragment StoreEntitySet="CategoryTable">
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MarkedAsReadInfoTables">
+      <EntityTypeMapping TypeName="QuickNewsModel.MarkedAsReadInfoTable">
+        <MappingFragment StoreEntitySet="MarkedAsReadInfoTable">
+          <ScalarProperty Name="MarkedAsRead_ID" ColumnName="MarkedAsRead_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="News_ID" ColumnName="News_ID" />
+          <ScalarProperty Name="isMarkedAsRead" ColumnName="isMarkedAsRead" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NewsTables">
+      <EntityTypeMapping TypeName="QuickNewsModel.NewsTable">
+        <MappingFragment StoreEntitySet="NewsTable">
+          <ScalarProperty Name="News_ID" ColumnName="News_ID" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Headline" ColumnName="Headline" />
+          <ScalarProperty Name="News" ColumnName="News" />
+          <ScalarProperty Name="NewsLink" ColumnName="NewsLink" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTables">
+      <EntityTypeMapping TypeName="QuickNewsModel.UserTable">
+        <MappingFragment StoreEntitySet="UserTable">
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

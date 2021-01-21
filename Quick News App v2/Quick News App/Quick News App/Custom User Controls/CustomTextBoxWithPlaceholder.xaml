@@ -1,0 +1,167 @@
+﻿<UserControl x:Class="Quick_News_App.Custom_User_Controls.CustomTextBoxWithPlaceholder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Quick_News_App.Custom_User_Controls"
+             mc:Ignorable="d" 
+             d:DesignWidth="300"
+			 Name="_this">
+
+	<UserControl.Resources>
+		<Style x:Key="PlacehholderStyle" TargetType="{x:Type TextBlock}">
+			<Setter Property="HorizontalAlignment" Value="Left"/>
+			<Setter Property="VerticalAlignment" Value="Top"/>
+			<Setter Property="Foreground" Value="{Binding PlaceholderColor, ElementName=_this}"/>
+			<Setter Property="FontSize" Value="20"/>
+			<Setter Property="Text" Value="{Binding Placeholder, ElementName=_this}"/>
+			<Setter Property="Padding" Value="{Binding CusTextBox_PaddingInsideOfTextBox, ElementName=_this}"/>
+			<Setter Property="Margin" Value="{Binding cusTextBox_PaddingOfContainer, ElementName=_this}"/>
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding Text, ElementName=Input}" Value="">
+					<Setter Property="Visibility" Value="Visible"/>
+
+					<!-- Default Position and Font Size of Placeholder --><!--
+					<DataTrigger.EnterActions>
+						<BeginStoryboard>
+							<Storyboard SpeedRatio="10">
+								<DoubleAnimation Storyboard.TargetProperty="FontSize" To="20"/>
+								<ThicknessAnimation Storyboard.TargetProperty="Margin" To="0"/>
+							</Storyboard>
+						</BeginStoryboard>
+					</DataTrigger.EnterActions>
+
+					--><!-- Position and Font Size of Placeholder when Texbox has value in it --><!--
+					<DataTrigger.ExitActions>
+						<BeginStoryboard>
+							<Storyboard SpeedRatio="10">
+								<DoubleAnimation Storyboard.TargetProperty="FontSize" To="12"/>
+								<ThicknessAnimation Storyboard.TargetProperty="Margin" To="0 0 0 20"/>
+							</Storyboard>
+						</BeginStoryboard>
+					</DataTrigger.ExitActions>-->
+
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+
+		<Style x:Key="TextboxInputStyle" TargetType="{x:Type TextBox}">
+			<Setter Property="Text" Value="{Binding Text, ElementName=_this, Mode=TwoWay}"/>
+			<Setter Property="Foreground" Value="{Binding ForegroundNormal, ElementName=_this}"/>
+			<Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+			<Setter Property="TextWrapping" Value="{Binding cusTextBox_TextWrap, ElementName=_this}"/>
+			<Setter Property="AcceptsReturn" Value="{Binding cusTextBox_AcceptsReturn, ElementName=_this}"/>
+			<Setter Property="MaxLength" Value="{Binding cusTextBox_MaxLength, ElementName=_this}"/>
+			<Setter Property="Padding" Value="{Binding CusTextBox_PaddingInsideOfTextBox, ElementName=_this}"/>
+			<Setter Property="Margin" Value="{Binding cusTextBox_PaddingOfContainer, ElementName=_this}"/>
+			<Setter Property="VerticalAlignment" Value="top"/>
+			<Setter Property="TextAlignment" Value="Left"/>
+			<Setter Property="FontWeight" Value="SemiBold"/>
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding FontSize, ElementName=PlaceholderText}" Value="12">
+					<Setter Property="Visibility" Value="Hidden"/>
+
+					<!-- Default Position and Font Size of Placeholder --><!--
+					<DataTrigger.EnterActions>
+						<BeginStoryboard>
+							<Storyboard SpeedRatio="10">
+								<DoubleAnimation Storyboard.TargetProperty="FontSize" To="20"/>
+								<ThicknessAnimation Storyboard.TargetProperty="Margin" To="0 15 0 0"/>
+							</Storyboard>
+						</BeginStoryboard>
+					</DataTrigger.EnterActions>
+
+					--><!-- Position and Font Size of Placeholder when Texbox has value in it --><!--
+					<DataTrigger.ExitActions>
+						<BeginStoryboard>
+							<Storyboard SpeedRatio="10">
+								<DoubleAnimation Storyboard.TargetProperty="FontSize" To="12"/>
+								<ThicknessAnimation Storyboard.TargetProperty="Margin" To="0"/>
+							</Storyboard>
+						</BeginStoryboard>
+					</DataTrigger.ExitActions>-->
+
+				</DataTrigger>
+				<DataTrigger Binding="{Binding Text, Mode=TwoWay, ElementName=_this}" Value="false">
+					<!-- Binding Password Text with Textbox text property to access it easily later in code -->
+					<Setter Property="Text" Value="{Binding Password, ElementName=PasswordInput}"/>
+				</DataTrigger>
+				<DataTrigger Binding="{Binding IsPassword, ElementName=_this}" Value="True">
+					<!-- Hide Textbox Input if IsPassword = True -->
+					<Setter Property="Visibility" Value="Collapsed"/>
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+
+		<Style x:Key="PasswordboxInputStyle" TargetType="{x:Type PasswordBox}">
+			<Setter Property="Foreground" Value="{Binding ForegroundNormal, ElementName=_this}"/>
+			<Setter Property="MaxLength" Value="{Binding cusTextBox_MaxLength, ElementName=_this}"/>
+			<Setter Property="Padding" Value="{Binding CusTextBox_PaddingInsideOfTextBox, ElementName=_this}"/>
+			<Setter Property="Margin" Value="{Binding cusTextBox_PaddingOfContainer, ElementName=_this}"/>
+			<Setter Property="VerticalAlignment" Value="top"/>
+			<Setter Property="FontWeight" Value="SemiBold"/>
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding FontSize, ElementName=PlaceholderText}" Value="12">
+					<Setter Property="Visibility" Value="Hidden"/>
+					
+					<!-- Default Position and Font Size of Placeholder --><!--
+					<DataTrigger.EnterActions>
+						<BeginStoryboard>
+							<Storyboard SpeedRatio="10">
+								<DoubleAnimation Storyboard.TargetProperty="FontSize" To="20"/>
+								<ThicknessAnimation Storyboard.TargetProperty="Margin" To="0 15 0 0"/>
+							</Storyboard>
+						</BeginStoryboard>
+					</DataTrigger.EnterActions>
+
+					--><!-- Position and Font Size of Placeholder when Texbox has value in it --><!--
+					<DataTrigger.ExitActions>
+						<BeginStoryboard>
+							<Storyboard SpeedRatio="10">
+								<DoubleAnimation Storyboard.TargetProperty="FontSize" To="12"/>
+								<ThicknessAnimation Storyboard.TargetProperty="Margin" To="0"/>
+							</Storyboard>
+						</BeginStoryboard>
+					</DataTrigger.ExitActions>-->
+
+				</DataTrigger>
+				<DataTrigger Binding="{Binding IsPassword, ElementName=_this}" Value="false">
+					<!-- Hide PasswordBox Input if IsPassword = false -->
+					<Setter Property="Visibility" Value="Collapsed"/>
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+	
+	</UserControl.Resources>
+
+	<Border
+		CornerRadius="{Binding CornerRadius, ElementName=_this}"
+		Background="{Binding BackgroundNormal, ElementName=_this}"
+		BorderThickness="{Binding cusTextBox_BorderThickness, ElementName=_this}"
+		BorderBrush="{Binding OutlineNormal, ElementName=_this}">
+
+		<!--  Shadow Effect --><!--
+		<Border.Effect>
+			<DropShadowEffect BlurRadius="13" ShadowDepth="2" Direction="270" Color="{Binding OutlineNormal, ElementName=_this}"/>
+		</Border.Effect>-->
+
+		<Grid>
+
+			<!-- Placeholder -->
+			<TextBlock x:Name="PlaceholderText" Style="{StaticResource PlacehholderStyle}"/>
+
+			<!-- Textbox -->
+			<TextBox x:Name="Input" CharacterCasing="Upper" Background="Transparent" Opacity="0.3" Style="{StaticResource TextboxInputStyle}"/>
+
+			<!-- For Password Inputs -->
+			<PasswordBox x:Name="PasswordInput" PasswordChanged="PasswordInput_PasswordChanged" Style="{StaticResource PasswordboxInputStyle}"/>
+
+		</Grid>
+
+	</Border>
+	
+</UserControl>

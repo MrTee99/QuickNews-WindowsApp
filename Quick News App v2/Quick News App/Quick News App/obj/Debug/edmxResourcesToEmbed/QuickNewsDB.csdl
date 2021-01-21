@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuickNewsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BookmarkInfoTable">
+    <Key>
+      <PropertyRef Name="Bookmark_ID" />
+    </Key>
+    <Property Name="Bookmark_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="News_ID" Type="Int32" Nullable="false" />
+    <Property Name="isBookmarked" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="NewsTable" Relationship="Self.FK_BookmarkInfoTable_NewsTable" FromRole="BookmarkInfoTable" ToRole="NewsTable" />
+    <NavigationProperty Name="UserTable" Relationship="Self.FK_BookmarkInfoTable_UserTable" FromRole="BookmarkInfoTable" ToRole="UserTable" />
+  </EntityType>
+  <EntityType Name="CategoryTable">
+    <Key>
+      <PropertyRef Name="Category_ID" />
+    </Key>
+    <Property Name="Category_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="NewsTables" Relationship="Self.FK_NewsTable_NewsTable" FromRole="CategoryTable" ToRole="NewsTable" />
+  </EntityType>
+  <EntityType Name="MarkedAsReadInfoTable">
+    <Key>
+      <PropertyRef Name="MarkedAsRead_ID" />
+    </Key>
+    <Property Name="MarkedAsRead_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="News_ID" Type="Int32" Nullable="false" />
+    <Property Name="isMarkedAsRead" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="NewsTable" Relationship="Self.FK_MarkedAsReadInfoTable_NewsTable" FromRole="MarkedAsReadInfoTable" ToRole="NewsTable" />
+    <NavigationProperty Name="UserTable" Relationship="Self.FK_MarkedAsReadInfoTable_UserTable" FromRole="MarkedAsReadInfoTable" ToRole="UserTable" />
+  </EntityType>
+  <EntityType Name="NewsTable">
+    <Key>
+      <PropertyRef Name="News_ID" />
+    </Key>
+    <Property Name="News_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="Headline" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="News" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NewsLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Category_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BookmarkInfoTables" Relationship="Self.FK_BookmarkInfoTable_NewsTable" FromRole="NewsTable" ToRole="BookmarkInfoTable" />
+    <NavigationProperty Name="CategoryTable" Relationship="Self.FK_NewsTable_NewsTable" FromRole="NewsTable" ToRole="CategoryTable" />
+    <NavigationProperty Name="MarkedAsReadInfoTables" Relationship="Self.FK_MarkedAsReadInfoTable_NewsTable" FromRole="NewsTable" ToRole="MarkedAsReadInfoTable" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="BookmarkInfoTables" Relationship="Self.FK_BookmarkInfoTable_UserTable" FromRole="UserTable" ToRole="BookmarkInfoTable" />
+    <NavigationProperty Name="MarkedAsReadInfoTables" Relationship="Self.FK_MarkedAsReadInfoTable_UserTable" FromRole="UserTable" ToRole="MarkedAsReadInfoTable" />
+  </EntityType>
+  <Association Name="FK_BookmarkInfoTable_NewsTable">
+    <End Role="NewsTable" Type="Self.NewsTable" Multiplicity="1" />
+    <End Role="BookmarkInfoTable" Type="Self.BookmarkInfoTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NewsTable">
+        <PropertyRef Name="News_ID" />
+      </Principal>
+      <Dependent Role="BookmarkInfoTable">
+        <PropertyRef Name="News_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookmarkInfoTable_UserTable">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+    <End Role="BookmarkInfoTable" Type="Self.BookmarkInfoTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="BookmarkInfoTable">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NewsTable_NewsTable">
+    <End Role="CategoryTable" Type="Self.CategoryTable" Multiplicity="1" />
+    <End Role="NewsTable" Type="Self.NewsTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryTable">
+        <PropertyRef Name="Category_ID" />
+      </Principal>
+      <Dependent Role="NewsTable">
+        <PropertyRef Name="Category_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MarkedAsReadInfoTable_NewsTable">
+    <End Role="NewsTable" Type="Self.NewsTable" Multiplicity="1" />
+    <End Role="MarkedAsReadInfoTable" Type="Self.MarkedAsReadInfoTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NewsTable">
+        <PropertyRef Name="News_ID" />
+      </Principal>
+      <Dependent Role="MarkedAsReadInfoTable">
+        <PropertyRef Name="News_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MarkedAsReadInfoTable_UserTable">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+    <End Role="MarkedAsReadInfoTable" Type="Self.MarkedAsReadInfoTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="MarkedAsReadInfoTable">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QuickNewsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BookmarkInfoTables" EntityType="Self.BookmarkInfoTable" />
+    <EntitySet Name="CategoryTables" EntityType="Self.CategoryTable" />
+    <EntitySet Name="MarkedAsReadInfoTables" EntityType="Self.MarkedAsReadInfoTable" />
+    <EntitySet Name="NewsTables" EntityType="Self.NewsTable" />
+    <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+    <AssociationSet Name="FK_BookmarkInfoTable_NewsTable" Association="Self.FK_BookmarkInfoTable_NewsTable">
+      <End Role="NewsTable" EntitySet="NewsTables" />
+      <End Role="BookmarkInfoTable" EntitySet="BookmarkInfoTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookmarkInfoTable_UserTable" Association="Self.FK_BookmarkInfoTable_UserTable">
+      <End Role="UserTable" EntitySet="UserTables" />
+      <End Role="BookmarkInfoTable" EntitySet="BookmarkInfoTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NewsTable_NewsTable" Association="Self.FK_NewsTable_NewsTable">
+      <End Role="CategoryTable" EntitySet="CategoryTables" />
+      <End Role="NewsTable" EntitySet="NewsTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MarkedAsReadInfoTable_NewsTable" Association="Self.FK_MarkedAsReadInfoTable_NewsTable">
+      <End Role="NewsTable" EntitySet="NewsTables" />
+      <End Role="MarkedAsReadInfoTable" EntitySet="MarkedAsReadInfoTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MarkedAsReadInfoTable_UserTable" Association="Self.FK_MarkedAsReadInfoTable_UserTable">
+      <End Role="UserTable" EntitySet="UserTables" />
+      <End Role="MarkedAsReadInfoTable" EntitySet="MarkedAsReadInfoTables" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
