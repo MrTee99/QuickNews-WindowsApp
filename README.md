@@ -1,6 +1,6 @@
 Software Demo GIF
 
-![Software Demo GIF](https://github.com/MrTee99/CPU-Scheduling-Simulator/blob/main/Demo%20GIF/Demo_GIF.gif)
+![Software Demo GIF](https://github.com/MrTee99/QuickNews-WindowsApp/blob/main/Screen%20Shots%20and%20Demo%20Video/Demo%20GIF/SoftwareDemo_GIF.gif)
 
 It is a desktop application developed using WPF with backend made in SSMS
 
